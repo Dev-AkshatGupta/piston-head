@@ -1,100 +1,107 @@
+import { useDataValues } from "../../contextAndReducers/DataProvider";
 import "./SingleVideoPage.css";
 // import { RecommendationCard } from "../VideoSmallCard/HorizontalCard";
 function SingleVideoPage() {
+  const { state } = useDataValues();
+  {
+    console.log(state.currentPlayingVideo);
+  }
+  const { creator, creatorLogo, src, title } = state.currentPlayingVideo;
   return (
-    <div class="scroll">
+    <div className="scroll">
       {/* <!-- Content --> */}
 
-      <div class="content">
+      <div className="content">
         {/* <!-- Main Column --> */}
 
-        <article class="main">
+        <article className="main">
           {/* <!-- Player --> */}
 
-          <section class="player">
+          <section className="player">
             <iframe
               width="560"
               height="315"
-              src="https://www.youtube.com/embed/gYs_jYUyaoY"
+              src={src}
               title="YouTube video player"
-              frameborder="0"
+              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
+              allowFullScreen
             ></iframe>
+            {/* {console.log(Embed)}
+            {console.log(typeof Embed)} */}
+            {/* {<Embed />} */}
           </section>
 
           {/* <!-- Lead --> */}
 
-          <section class="bg-style">
+          <section className="bg-style">
             {/* <!-- Title --> */}
 
-            <h1 className="align-left">
-              Contributing to Open Source Part I: The Easy Way
-            </h1>
+            <h1 className="align-left">{title}</h1>
 
             {/* <!-- Media Object --> */}
 
-            <div class="media">
+            <div className="media">
               <img
-                class="img-profile media-figure"
-                src="https://yt3.ggpht.com/-UbUyULJMBoM/AAAAAAAAAAI/AAAAAAAAAAA/LGD8KPvBEdc/s88-c-k-no/photo.jpg"
-                alt=""
+                className="img-profile media-figure"
+                src={creatorLogo.url}
+                alt={creatorLogo.altText}
               />
 
-              <div class="media-body align-left">
-                <h3>The Odin Project</h3>
+              <div className="media-body align-left">
+                <h3>{creator}</h3>
 
-                <div class="subscribe"></div>
+                <div className="subscribe"></div>
               </div>
             </div>
             <hr />
 
             {/* <!-- Button Bar --> */}
 
-            <div class="lead-btn-row">
-              <div class="lead-social-btn">
+            <div className="lead-btn-row">
+              <div className="lead-social-btn">
                 <a href="">
-                  <i class="material-icons md-dark">add</i>
+                  <i className="material-icons md-dark">add</i>
                   <span>Add to watchlater</span>
                 </a>
                 <a href="">
-                  <i class="material-icons md-dark md-18">share</i>
+                  <i className="material-icons md-dark md-18">share</i>
                   <span>Share</span>
                 </a>
                 <a>
-                  <i class="material-icons md-dark">more_horiz</i>
+                  <i className="material-icons md-dark">more_horiz</i>
                   <span>More</span>
                 </a>
               </div>
-              <div class="lead-voting-btn">
+              <div className="lead-voting-btn">
                 <a href="">
-                  <i class="material-icons md-dark md-18">thumb_up</i>
+                  <i className="material-icons md-dark md-18">thumb_up</i>
                   <span>42</span>
                 </a>
                 <a>
-                  <i class="material-icons md-dark md-18">thumb_down</i>
+                  <i className="material-icons md-dark md-18">thumb_down</i>
                   <span>0</span>
                 </a>
               </div>
             </div>
           </section>
 
-          <section class="comments bg-style"></section>
+          <section className="comments bg-style"></section>
         </article>
 
         {/* <!-- Aside --> */}
 
-        <aside class="aside bg-style">
+        <aside className="aside bg-style">
           {/* <!-- Media Objects --> */}
 
-          <div class="next-up-bar">
+          <div className="next-up-bar">
             <h5 className="align-left">Up next</h5>
             <h5>Autoplay</h5>
-            <i class="material-icons md-18 md-dark">info</i>
+            <i className="material-icons md-18 md-dark">info</i>
 
-            <div class="switch-container">
-              <div class="switch-bar"></div>
-              <div class="switch-circle"></div>
+            <div className="switch-container">
+              <div className="switch-bar"></div>
+              <div className="switch-circle"></div>
             </div>
           </div>
 

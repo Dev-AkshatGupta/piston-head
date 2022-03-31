@@ -1,45 +1,45 @@
 import "./Footer.css";
 function Footer() {
   return (
-    <footer class="footer bg-style">
+    <footer className="footer bg-style">
       {/* <!-- Button Footer Row --> */}
 
-      <div class="button-footer">
+      <div className="button-footer">
         <a src="">
-          <div class="logo"></div>
+          <div className="logo"></div>
         </a>
         <button>
-          <i class="material-icons md-dark md-18">language</i>
-          <span class="footer-btn">
+          <i className="material-icons md-dark md-18">language</i>
+          <span className="footer-btn">
             Language: <strong>English</strong>
           </span>
-          <i class="material-icons md-dark md-18">arrow_drop_down</i>
+          <i className="material-icons md-dark md-18">arrow_drop_down</i>
         </button>
         <button>
-          <span class="footer-btn">
+          <span className="footer-btn">
             Country: <strong>Worldwide</strong>
           </span>
-          <i class="material-icons md-dark md-18">arrow_drop_down</i>
+          <i className="material-icons md-dark md-18">arrow_drop_down</i>
         </button>
         <button>
-          <span class="footer-btn">
+          <span className="footer-btn">
             Restricted Mode: <strong>Off</strong>
           </span>
-          <i class="material-icons md-dark md-18">arrow_drop_down</i>
+          <i className="material-icons md-dark md-18">arrow_drop_down</i>
         </button>
         <button>
-          <i class="material-icons md-dark md-18">history</i>
+          <i className="material-icons md-dark md-18">history</i>
           <span>History</span>
         </button>
         <button>
-          <i class="material-icons md-dark md-18">help</i>
+          <i className="material-icons md-dark md-18">help</i>
           <span>Help</span>
         </button>
       </div>
 
       {/* <!-- Primary Links Footer --> */}
 
-      <ul class="primary-links-footer">
+      <ul className="primary-links-footer">
         <li>About</li>
         <li>Press</li>
         <li>Copyright</li>
@@ -51,7 +51,7 @@ function Footer() {
 
       {/* <!-- Secondary Links Footer --> */}
 
-      <ul class="secondary-links-footer terms">
+      <ul className="secondary-links-footer terms">
         <li>Terms</li>
         <li>Privacy</li>
         <li>Policy & Safety</li>

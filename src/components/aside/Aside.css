@@ -8,10 +8,11 @@
     left: 0;
     transform: translate3d(0, 0, 0);
     transition: transform 0.15s;
-
+    z-index: 101;
     font-family: "Roboto", sans-serif;
     font-size: 16px;
 }
+
 
 #nav-drawer>* {
     flex: none;
@@ -20,11 +21,12 @@
 #nav-drawer>a {
     display: flex;
     align-items: center;
-    /* justify-content: space-evenly; */
+    
 }
 
-#nav-drawer>span {
+#nav-drawer span {
     font-weight: 400;
+    color: rgba(0, 0, 0, 0.54);
 }
 
 .nav-drawer-items-padding {
@@ -48,6 +50,9 @@
     color: black;
 }
 
-/* .hide {
+.hide {
   transform: translate3d(-100%, 0, 0) !important;
-} */
+}
+.material-icons.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+}

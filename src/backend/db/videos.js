@@ -1,3 +1,4 @@
+import {v4 as uuid} from "uuid";
 /**
  * Videos Database can be added here.
  * You can add videos of your wish with different attributes
@@ -6,6 +7,7 @@ export const videos =
 [
 {
     _id: uuid(),
+      src:"https://www.youtube.com/embed/E8GzE_pMsWU?start=122" ,
     categoryName: "American Classics",
     creator: "MotorTrend Channel",
     creatorLogo: {
@@ -23,6 +25,7 @@ export const videos =
   },
 {
     _id: uuid(),
+     src:"https://www.youtube.com/embed/8HP5COGRfC0",
     categoryName: "American Classics",
     creator: "MotorTrend Channel",
     creatorLogo: {
@@ -40,6 +43,7 @@ export const videos =
   },
 {
     _id: uuid(),
+     src:"https://www.youtube.com/embed/pq8nKiS2Zxg?start=1" ,
     categoryName: "Bikes",
     creator: "History",
     creatorLogo: {
@@ -57,6 +61,7 @@ export const videos =
   },
 {
     _id: uuid(),
+     src:"https://www.youtube.com/embed/R5XMKUOm0pk" ,
     categoryName: "Bikes",
     creator: "History",
     creatorLogo: {
@@ -74,6 +79,7 @@ export const videos =
   },
 {
     _id: uuid(),
+     src:"https://www.youtube.com/embed/E3nfUuQWyRM" ,
     categoryName: "Bikes",
     creator: "History",
     creatorLogo: {
@@ -89,26 +95,11 @@ export const videos =
     title: "Counting Cars: Danny Reveals a Crazy New Paint Job for a Motorcycle (S7, E16) | History",
     
   },
+
 {
     _id: uuid(),
     categoryName: "Bikes",
-    creator: "History",
-    creatorLogo: {
-      altText: "History Logo",
-      url: "https://yt3.ggpht.com/IVVrue_WHD9lK-12DvplMxKoxOYOS2kjYl1tbhC_fONBK06E-YfdEdtScQNwWQUbxrHfwnxBgw=s68-c-k-c0x00ffffff-no-rj",
-    },
-    isInWatchLater: false,
-    isLiked: false,
-    thumbnail: {
-      altText: "Counting Cars: Les Paul Motorcycle | History",
-      url: "https://i.ytimg.com/vi/R5XMKUOm0pk/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBXlU7ufnUvIbzOFOrujFcJjgFUNw",
-    },
-    title: "Counting Cars: Les Paul Motorcycle | History",
-    
-  },
-{
-    _id: uuid(),
-    categoryName: "Bikes",
+     src:"https://www.youtube.com/embed/R_jY1InrTys",
     creator: "History",
     creatorLogo: {
       altText: "History Logo",
@@ -125,6 +116,7 @@ export const videos =
   },
 {
     _id: uuid(),
+     src:"https://www.youtube.com/embed/_tMzf2L-osg" ,
     categoryName: "American Classics",
     creator: "MotorTrend Channel",
     creatorLogo: {
@@ -142,6 +134,7 @@ export const videos =
   },
 {
     _id: uuid(),
+     src:"https://www.youtube.com/embed/6oDndmNFO5I?start=12"  ,
     categoryName: "Car Reviews",
     creator: "Fuel Injected",
     creatorLogo: {
@@ -151,7 +144,7 @@ export const videos =
     isInWatchLater: false,
     isLiked: false,
     thumbnail: {
-      altText: "Two Noobs and a Modified Royal Enfield : Holy Shift : Episode 1 : PowerDrift",
+      altText: "Skoda Octavia 2021 Real Life Review - 2.0 TSI Is Superbbbbb !!!!!",
       url: "https://i.ytimg.com/vi/6oDndmNFO5I/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBllLPgHJpk_DuXkqTsqlHXZCy0PQ",
     },
     title: "Skoda Octavia 2021 Real Life Review - 2.0 TSI Is Superbbbbb !!!!!",
@@ -160,6 +153,7 @@ export const videos =
 
  {
     _id: uuid(),
+     src:"https://www.youtube.com/embed/IRwEYAq9SwE" ,
     categoryName: "Car Reviews",
     creator: "Faisal Khan",
     creatorLogo: {
@@ -179,6 +173,7 @@ export const videos =
 
  {
     _id: uuid(),
+     src:"https://www.youtube.com/embed/rXdxTdNRGic" ,
     categoryName: "Car Reviews",
     creator: "Faisal Khan",
     creatorLogo: {
@@ -197,6 +192,7 @@ export const videos =
 
   {
     _id: uuid(),
+     src:"https://www.youtube.com/embed/Yzs4g8vqs4M",
     categoryName: "Car Reviews",
     creator: "Faisal Khan",
     creatorLogo: {
@@ -214,6 +210,7 @@ export const videos =
   },
 {
     _id: uuid(),
+     src:"https://www.youtube.com/embed/G2KK-x0O0cY" ,
     categoryName: "Car Reviews",
     creator: "Faisal Khan",
     creatorLogo: {
@@ -231,57 +228,7 @@ export const videos =
   },
 {
     _id: uuid(),
-    categoryName: "Custom",
-    creator: "PowerDrift",
-    creatorLogo: {
-      altText: "PowerDrift Logo",
-      url: "https://yt3.ggpht.com/ytc/AKedOLS3H1iDFct-st71_rCt-dWiUPYkt5PCTsI_B92T=s68-c-k-c0x00ffffff-no-rj",
-    },
-    isInWatchLater: false,
-    isLiked: false,
-    thumbnail: {
-      altText: "Two Noobs and a Modified Royal Enfield : Holy Shift : Episode 1 : PowerDrift",
-      url: "https://i.ytimg.com/an_webp/NlHG98RGles/mqdefault_6s.webp?du=3000&sqp=CJu3gpIG&rs=AOn4CLBTIlFpT2G0hZ6kj9H3qyg2_0uYGQ",
-    },
-    title: "Two Noobs and a Modified Royal Enfield : Holy Shift : Episode 1 : PowerDrift",
-    
-  },
-{
-    _id: uuid(),
-    categoryName: "Custom",
-    creator: "PowerDrift",
-    creatorLogo: {
-      altText: "PowerDrift Logo",
-      url: "https://yt3.ggpht.com/ytc/AKedOLS3H1iDFct-st71_rCt-dWiUPYkt5PCTsI_B92T=s68-c-k-c0x00ffffff-no-rj",
-    },
-    isInWatchLater: false,
-    isLiked: false,
-    thumbnail: {
-      altText: "A smurfed out Pulsar and a chopped KTM 390 Duke : Holy Shift : Episode 3 : PowerDrift",
-      url: "https://i.ytimg.com/an_webp/Ui3OX8Zyh0s/mqdefault_6s.webp?du=3000&sqp=CK2bgpIG&rs=AOn4CLB7R9m4M8RzP8dBxLd3FZiuFYFtXw",
-    },
-    title: "A smurfed out Pulsar and a chopped KTM 390 Duke : Holy Shift : Episode 3 : PowerDrift",
-    
-  },
-{
-    _id: uuid(),
-    categoryName: "Custom",
-    creator: "PowerDrift",
-    creatorLogo: {
-      altText: "PowerDrift Logo",
-      url: "https://yt3.ggpht.com/ytc/AKedOLS3H1iDFct-st71_rCt-dWiUPYkt5PCTsI_B92T=s68-c-k-c0x00ffffff-no-rj",
-    },
-    isInWatchLater: false,
-    isLiked: false,
-    thumbnail: {
-      altText: "A smurfed out Pulsar and a chopped KTM 390 Duke : Holy Shift : Episode 3 : PowerDrift",
-      url: "https://i.ytimg.com/an_webp/Ui3OX8Zyh0s/mqdefault_6s.webp?du=3000&sqp=CK2bgpIG&rs=AOn4CLB7R9m4M8RzP8dBxLd3FZiuFYFtXw",
-    },
-    title: "A smurfed out Pulsar and a chopped KTM 390 Duke : Holy Shift : Episode 3 : PowerDrift",
-    
-  },
-{
-    _id: uuid(),
+     src:"https://www.youtube.com/embed/GmaRqbqI-8M" ,
     categoryName: "Custom",
     creator: "PowerDrift",
     creatorLogo: {
@@ -299,23 +246,7 @@ export const videos =
   },
 {
     _id: uuid(),
-    categoryName: "Custom",
-    creator: "PowerDrift",
-    creatorLogo: {
-      altText: "PowerDrift Logo",
-      url: "https://yt3.ggpht.com/ytc/AKedOLS3H1iDFct-st71_rCt-dWiUPYkt5PCTsI_B92T=s68-c-k-c0x00ffffff-no-rj",
-    },
-    isInWatchLater: false,
-    isLiked: false,
-    thumbnail: {
-      altText: "A smurfed out Pulsar and a chopped KTM 390 Duke : Holy Shift : Episode 3 : PowerDrift",
-      url: "https://i.ytimg.com/vi/Ui3OX8Zyh0s/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBNPlf0nW2PCWbcdwSi8CKVX7bOEQ",
-    },
-    title: "A smurfed out Pulsar and a chopped KTM 390 Duke : Holy Shift : Episode 3 : PowerDrift",
-    
-  },
-{
-    _id: uuid(),
+     src:"https://www.youtube.com/embed/RL13JPhDiII"  ,
     categoryName: "Custom",
     creator: "PowerDrift",
     creatorLogo: {
@@ -333,6 +264,7 @@ export const videos =
   },
 {
     _id: uuid(),
+    src:"https://www.youtube.com/embed/nzkPpIdEbvo" ,
     categoryName: "Repairs",
     creator: "DDS",
     creatorLogo: {
@@ -348,25 +280,10 @@ export const videos =
     title: "पैसे बचा लिए - घर पर Full Service करके।",
     
   },
+
 {
     _id: uuid(),
-    categoryName: "Repairs",
-    creator: "DDS",
-    creatorLogo: {
-      altText: "DDS",
-      url: "https://yt3.ggpht.com/2oKoUK0upImxNllk_vZkrdbYUmdQmQ1VCXsyN8B6S7QPmd6y4os4R3gKBa_1rhIz6cIYvyF43Q=s68-c-k-c0x00ffffff-no-rj",
-    },
-    isInWatchLater: false,
-    isLiked: false,
-    thumbnail: {
-      altText: "पैसे बचा लिए - घर पर Full Service करके।",
-      url: "https://i.ytimg.com/vi/nzkPpIdEbvo/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCqnZ0swz4SXOUlDoYMxsaX20ri1A",
-    },
-    title: "पैसे बचा लिए - घर पर Full Service करके।",
-    
-  },
-{
-    _id: uuid(),
+     src:"https://www.youtube.com/embed/Pz8IGLgFE2s" ,
     categoryName: "Cars Evolution",
     creator: "Donut Media",
     creatorLogo: {
@@ -383,6 +300,7 @@ export const videos =
   },
 {
     _id: uuid(),
+     src:"https://www.youtube.com/embed/11nLdduJzzI" ,
     categoryName: "Cars Evolution",
     creator: "Donut Media",
     creatorLogo: {
@@ -399,6 +317,7 @@ export const videos =
   },
 {
     _id: uuid(),
+    src:"https://www.youtube.com/embed/nR3OdeqiEF8" ,
     categoryName: "Cars Evolution",
     creator: "Donut Media",
     creatorLogo: {
