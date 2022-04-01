@@ -32,8 +32,8 @@ li {
 
 a {
   text-decoration: none;
+  color:var(--PURE-BLACK);
 }
-
 ::selection {
   background-color: var(--ICONS-ORANGE);
   color: white;

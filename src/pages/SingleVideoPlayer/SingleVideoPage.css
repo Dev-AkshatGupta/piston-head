@@ -124,9 +124,6 @@ button {
     width: 400px;
 }
 
-.footer {
-    min-width: 1000px;
-}
 
 .comments,
 .btn-upload,
@@ -343,13 +340,9 @@ li:hover {
     border-top: 1px solid #e2e2e2;
 }
 
-#nav-drawer>a:hover {
-    background: #444;
-}
 
-#nav-drawer>a:hover>* {
-    color: #fff;
-}
+
+
 
 /* 
   ==========================
@@ -401,6 +394,9 @@ iframe {
 .img-aside {
     width: 120px;
     height: 90px;
+}
+.material-icons.md-dark.md-18.liked {
+    color:var(--ICONS-ORANGE)
 }
 
 /* 

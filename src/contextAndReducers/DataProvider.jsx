@@ -28,7 +28,6 @@ const DataProvider = ({ children }) => {
             data: state.backUpData,
           };
       case "VIDEO_CLICKED":
-        console.log(action.payload);
         return {
           ...state,
           currentPlayingVideo:
@@ -36,6 +35,12 @@ const DataProvider = ({ children }) => {
               state.backUpData.findIndex((item) => item._id === action.payload)
             ],
         };
+      case "LIKE":
+        return { ...state, likedVideos: action.payload };
+      case "WATCH_LATER":
+        return { ...state, watchLater: action.payload };
+      case "HISTORY":
+        return { ...state, historyList: action.payload };
       case "ASIDE":
         return { ...state, aside: !state.aside };
 
@@ -49,6 +54,9 @@ const DataProvider = ({ children }) => {
     Loader: true,
     aside: true,
     currentPlayingVideo: {},
+    likedVideos: [],
+    watchLater: [],
+    historyList: [],
   });
 
   return (

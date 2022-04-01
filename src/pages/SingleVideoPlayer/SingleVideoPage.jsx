@@ -1,12 +1,28 @@
 import { useDataValues } from "../../contextAndReducers/DataProvider";
+import {
+  useLikeActions,
+  useWatchLaterActions,
+} from "../../utilities/CustomHooks";
+import { useParams } from "react-router-dom";
 import "./SingleVideoPage.css";
 // import { RecommendationCard } from "../VideoSmallCard/HorizontalCard";
 function SingleVideoPage() {
   const { state } = useDataValues();
-  {
-    console.log(state.currentPlayingVideo);
-  }
-  const { creator, creatorLogo, src, title } = state.currentPlayingVideo;
+  const { likeVideo, disLikeVideo } = useLikeActions();
+  const { makeWatchLater, deleteFromWatchLater } = useWatchLaterActions();
+  // id of the object which is playing now
+  const { source } = useParams();
+  const currentVideo =
+    state.data[state.data.findIndex((item) => item._id === source)];
+  const { creator, creatorLogo, src, title, _id: id } = currentVideo;
+  console.log("Single Video PAge");
+  console.log(currentVideo);
+  const findLiked = state.likedVideos.findIndex((item) => item._id === id);
+  const findWatchLaterIndex = state.watchLater.findIndex(
+    (item) => item._id === id
+  );
+
+  // const findWatchLaterIndex = -1;
   return (
     <div className="scroll">
       {/* <!-- Content --> */}
@@ -27,9 +43,6 @@ function SingleVideoPage() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
-            {/* {console.log(Embed)}
-            {console.log(typeof Embed)} */}
-            {/* {<Embed />} */}
           </section>
 
           {/* <!-- Lead --> */}
@@ -60,9 +73,18 @@ function SingleVideoPage() {
 
             <div className="lead-btn-row">
               <div className="lead-social-btn">
-                <a href="">
+                <a>
                   <i className="material-icons md-dark">add</i>
-                  <span>Add to watchlater</span>
+                  {findWatchLaterIndex === -1 && (
+                    <span onClick={() => makeWatchLater(currentVideo)}>
+                      Add to watchlater
+                    </span>
+                  )}
+                  {findWatchLaterIndex > -1 && (
+                    <span onClick={() => deleteFromWatchLater(id)}>
+                      Remove from watchLater
+                    </span>
+                  )}
                 </a>
                 <a href="">
                   <i className="material-icons md-dark md-18">share</i>
@@ -74,13 +96,28 @@ function SingleVideoPage() {
                 </a>
               </div>
               <div className="lead-voting-btn">
-                <a href="">
-                  <i className="material-icons md-dark md-18">thumb_up</i>
-                  <span>42</span>
+                <a
+                  onClick={() => {
+                    likeVideo(currentVideo);
+                  }}
+                >
+                  {findLiked === -1 && (
+                    <i className="material-icons md-dark md-18">thumb_up</i>
+                  )}
+                  {findLiked > -1 && (
+                    <i className="material-icons md-dark md-18 liked">
+                      thumb_up
+                    </i>
+                  )}
                 </a>
-                <a>
-                  <i className="material-icons md-dark md-18">thumb_down</i>
-                  <span>0</span>
+                <a
+                  onClick={() => {
+                    disLikeVideo(id);
+                  }}
+                >
+                  {findLiked > -1 && (
+                    <i className="material-icons md-dark md-18">thumb_down</i>
+                  )}
                 </a>
               </div>
             </div>

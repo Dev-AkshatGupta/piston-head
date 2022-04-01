@@ -6,17 +6,21 @@ import { makeServer } from "./server";
 import axios from "axios";
 import { BrowserRouter as Router } from "react-router-dom";
 import {DataProvider} from "./contextAndReducers/DataProvider";
+import{AuthProvider} from "./contextAndReducers/AuthProvider"
 // Call make Server
 makeServer();
-// IIFE  for me being always logged-in for various functionalities
+
   
 
 ReactDOM.render(
   <React.StrictMode>
      <Router>
-       <DataProvider>
+       < AuthProvider>  
+            <DataProvider>
     <App />
     </DataProvider>
+    </AuthProvider>
+
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

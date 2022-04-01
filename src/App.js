@@ -30,6 +30,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ExplorePage/>}/>
         <Route path="/singleVideo-page" element={<SingleVideoPage/>}/>
+        <Route path="/singleVideo-page/:source" element={<SingleVideoPage/>}/>
         <Route path="/mock" element={<Mockman/>}/>
         
       </Routes>
