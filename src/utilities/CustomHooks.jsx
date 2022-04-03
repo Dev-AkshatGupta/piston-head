@@ -2,7 +2,7 @@ import axios from "axios";
 import { useDataValues } from "../contextAndReducers/DataProvider";
 import { useAuthorization } from "../contextAndReducers/AuthProvider";
 const token = () => {
-  return token();
+  return localStorage.getItem("token");
 };
 
 const useFetchingData = () => {
