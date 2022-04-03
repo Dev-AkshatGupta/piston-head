@@ -17,6 +17,7 @@ const useFetchingData = () => {
       console.log(error);
     }
   }
+  
   async function fetchCategoriesData() {
     try {
       const { data } = await axios.get("/api/categories");

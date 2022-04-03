@@ -16,6 +16,7 @@ function History() {
             deleteAllHistory();
           }}
         >
+          
           Delete All History
         </button>
       </div>
