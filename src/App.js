@@ -27,20 +27,20 @@ const timeoutID= setTimeout(()=> {authDispatch({
    
       });clearTimeout(timeoutID)},2000)
 },[authState.toast.display])
-  // useEffect(
-  //      async () => {
-  //     try {
-  //       const response = await axios.post("/api/auth/login", {
-  //             email: "adarshbalika@gmail.com",
-  //   password: "adarshBalika123",
-  //       });
-  //       console.log(response.data.foundUser);
-  //       localStorage.setItem("token", response.data.encodedToken);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
+  useEffect(
+       async () => {
+      try {
+        const response = await axios.post("/api/auth/login", {
+              email: "adarshbalika@gmail.com",
+    password: "adarshBalika123",
+        });
+        console.log(response.data.foundUser);
+        localStorage.setItem("token", response.data.encodedToken);
+      } catch (error) {
+        console.log(error);
+      }
   
-  // },[])
+  },[])
   return (
     <div className="App">
       {modalDisplay&&
