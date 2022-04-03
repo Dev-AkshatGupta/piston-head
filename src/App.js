@@ -7,8 +7,15 @@ import {Footer} from "./components/Footer/Footer";
 import {Aside} from "./components/aside/Aside";
 import { useEffect } from "react";
 import {SingleVideoPage} from "./pages/SingleVideoPlayer/SingleVideoPage";
+import { WatchLater } from "./pages/WatchLater/WatchLater";
+import { History } from "./pages/History/History"; 
+import { PlayListModal } from "./components/PlayListModal/PlayListModal";
+import { useDataValues } from "./contextAndReducers/DataProvider";
+import {PlayListPage} from "./pages/PlayList/PlayListPage";
+import {Page404} from "./pages/Page-404/Page404";
 import axios from "axios";
 function App() {
+const {modalDisplay, setModalDisplay}=useDataValues();
   useEffect(
        async () => {
       try {
@@ -21,22 +28,27 @@ function App() {
       } catch (error) {
         console.log(error);
       }
-    
+  
   },[])
   return (
     <div className="App">
+      {modalDisplay&&
+      < PlayListModal/>
+      }
       <NavBar/>
       <Aside/>
       <Routes>
         <Route path="/" element={<ExplorePage/>}/>
-        <Route path="/singleVideo-page" element={<SingleVideoPage/>}/>
         <Route path="/singleVideo-page/:source" element={<SingleVideoPage/>}/>
+        <Route path="/watchLater-page" element ={<WatchLater/>}/>
+        <Route path="/history-page" element ={< History/>}/>
         <Route path="/mock" element={<Mockman/>}/>
-        
+        <Route path="/playlist-page/:id" element={<PlayListPage/>}/>
+        <Route path="*" element={<Page404/>}/>
+        {/* <Route path" */}
       </Routes>
     <Footer/>
     </div>
-
   );
 }
 

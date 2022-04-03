@@ -1,15 +1,12 @@
-import "./VideoCard.css";
+import "./PlayListCard.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { VerticalEllipsis } from "../../IconsAndAssets/Icons/VerticlElipssis";
-import { useDataValues } from "../../contextAndReducers/DataProvider";
+// import { useDataValues } from "../../contextAndReducers/DataProvider";
 import {
-  useWatchLaterActions,
   useVideoHistory,
+  usePlayListVideoActions,
 } from "../../utilities/CustomHooks";
-import { MenuCard } from "./MenuCard";
-
-function VideoCard({
+import { ImBin2 } from "react-icons/im";
+function PlayListCard({
   contentPhoto,
   contentPhotoAlt,
   creatorPhoto,
@@ -18,22 +15,21 @@ function VideoCard({
   creatorName,
   id,
   obj,
+  playlistId,
 }) {
-  const [menu, setMenu] = useState(false);
-  const { dispatch } = useDataValues();
   const { history } = useVideoHistory();
-
+  const { removeVideoFromPlaylist } = usePlayListVideoActions();
   return (
-    <div
-      onClick={() => {
-        dispatch({ type: "VIDEO_CLICKED", payload: id });
-      }}
-    >
+    <div>
       <div className="vid-content-image">
         {/* content photo */}
         <Link to={`/singleVideo-page/${id}`} onClick={() => history(obj)}>
           <img src={contentPhoto} alt={contentPhotoAlt} />
         </Link>
+        <ImBin2
+          className="text bin-delete"
+          onClick={() => removeVideoFromPlaylist(id, playlistId)}
+        />
       </div>
       <div className="card-text-content">
         <div className="vid-creator-image">
@@ -45,8 +41,6 @@ function VideoCard({
           />
         </div>
         <div className="vid-card-description">
-          {menu && <MenuCard obj={obj} setMenu={setMenu} menu={menu} />}
-
           <span className="text thumbnail">
             <Link to={`/singleVideo-page/${id}`}>{thumbNail} </Link>
           </span>
@@ -57,11 +51,8 @@ function VideoCard({
             </Link>
           </span>
         </div>
-        <div className="vid-menu-option " onClick={() => setMenu(!menu)}>
-          <VerticalEllipsis />
-        </div>
       </div>
     </div>
   );
 }
-export { VideoCard };
+export { PlayListCard };

@@ -1,5 +1,6 @@
 import { useDataValues } from "../../contextAndReducers/DataProvider";
 import "./NavBar.css";
+import { Link } from "react-router-dom";
 function NavBar() {
   const { dispatch } = useDataValues();
   return (
@@ -13,12 +14,12 @@ function NavBar() {
         >
           <i className="material-icons md-dark md-inactive">menu</i>
         </div>
-        <a href="">
+        <Link to="/">
           <div className="logo text-accent text"></div>
-        </a>
-        <a href="">
+        </Link>
+        <Link to="/">
           <div className="text-accent text">Piston-head</div>
-        </a>
+        </Link>
       </div>
 
       {/* <!-- Search --> */}

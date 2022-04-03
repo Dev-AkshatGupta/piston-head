@@ -1,0 +1,82 @@
+.vid-content-image {
+    height: 15.6rem;
+    width: 27.84rem;
+    position: relative;
+}
+
+.card-text-content {
+    width: 27.84rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+}
+
+.vid-creator-image {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+
+.vid-card-description {
+    width: 20.6rem;
+    height: 7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: left;
+    position: relative;
+    top: 0;
+}
+
+.vid-card-description>.thumbnail {
+    font-weight: 550;
+    width: 15rem;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+}
+
+.vid-card-description>.details {
+    font-weight: 550;
+    font-size: 14px;
+
+    justify-self: start;
+    margin-top: 6px;
+}
+
+.vid-menu-option {
+    align-self: flex-start;
+    color: var(--DARK-GREY);
+    font-size: 16px;
+}
+
+.menu-video-card {
+    width: 18rem;
+
+    display: flex;
+    flex-direction: column;
+    background-color: var(--ACCENT-COLOR-LIGHT);
+    position: absolute;
+    z-index: 11;
+
+    justify-content: space-evenly;
+    text-align: left;
+}
+
+.menu-card-options {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    cursor: pointer;
+}
+.bin-delete{
+    position: absolute;
+    top: 1rem;
+    right:1rem;
+    color:var(--ERROR-RED-DARK);
+    font-size: 2rem;
+}

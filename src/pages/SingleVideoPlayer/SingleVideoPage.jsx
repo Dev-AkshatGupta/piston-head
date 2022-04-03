@@ -12,11 +12,11 @@ function SingleVideoPage() {
   const { makeWatchLater, deleteFromWatchLater } = useWatchLaterActions();
   // id of the object which is playing now
   const { source } = useParams();
+  console.log(source);
   const currentVideo =
     state.data[state.data.findIndex((item) => item._id === source)];
   const { creator, creatorLogo, src, title, _id: id } = currentVideo;
-  console.log("Single Video PAge");
-  console.log(currentVideo);
+
   const findLiked = state.likedVideos.findIndex((item) => item._id === id);
   const findWatchLaterIndex = state.watchLater.findIndex(
     (item) => item._id === id

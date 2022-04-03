@@ -56,3 +56,7 @@
 .material-icons.md-dark {
     color: rgba(0, 0, 0, 0.54);
 }
+.active-aside-link{
+       background: var(--ACCENT-COLOR-LIGHT);
+       color: black;
+}

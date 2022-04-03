@@ -1,8 +1,7 @@
-import { useEffect } from "react";
 import axios from "axios";
 import { useDataValues } from "../contextAndReducers/DataProvider";
 import { useAuthorization } from "../contextAndReducers/AuthProvider";
-import { Action } from "history";
+
 const useFetchingData = () => {
   const { dispatch } = useDataValues();
   // Fetching initial value from the server
@@ -15,8 +14,17 @@ const useFetchingData = () => {
       console.log(error);
     }
   }
+  async function fetchCategoriesData() {
+    try {
+      const { data } = await axios.get("/api/categories");
 
-  return { fetchData };
+      dispatch({ type: "CATEGORY_DATA", payload: data.categories });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  return { fetchData, fetchCategoriesData };
 };
 
 const useUserDetails = () => {
@@ -200,7 +208,6 @@ const useVideoHistory = () => {
         },
       });
       if (response.status === 200 || response.status === 201) {
-        console.log(response.data.history);
         dispatch({
           type: "HISTORY",
           payload: response.data.history,
@@ -235,7 +242,7 @@ const useVideoHistory = () => {
   const deleteHistory = async (videoId) => {
     const encodedToken = localStorage.getItem("token");
     try {
-      const response = await axios.delete(` /api/user/history/${videoId}`, {
+      const response = await axios.delete(`/api/user/history/${videoId}`, {
         headers: {
           authorization: encodedToken, // passing token as an authorization header
         },
@@ -251,7 +258,7 @@ const useVideoHistory = () => {
   const deleteAllHistory = async () => {
     const encodedToken = localStorage.getItem("token");
     try {
-      const response = await axios.delete(` /api/user/history/all`, {
+      const response = await axios.delete(`/api/user/history/all`, {
         headers: {
           authorization: encodedToken, // passing token as an authorization header
         },
@@ -269,8 +276,125 @@ const useVideoHistory = () => {
 
 const usePlayListActions = () => {
   const { dispatch } = useDataValues();
-  // to get the data
-  // const getPlayList
+  // function for getting the initial data from the db
+  const getPlaylists = async () => {
+    const encodedToken = localStorage.getItem("token");
+    try {
+      const response = await axios.get(`/api/user/playlists`, {
+        headers: {
+          authorization: encodedToken, // passing token as an authorization header
+        },
+      });
+      if (response.status === 200 || response.status === 201) {
+        dispatch({ type: "PLAYLIST", payload: response.data.playlists });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const newPlayList = async (title, description) => {
+    const encodedToken = localStorage.getItem("token");
+    try {
+      const response = await axios.post(
+        `/api/user/playlists`,
+        {
+          playlist: { title, description },
+        },
+        {
+          headers: {
+            authorization: encodedToken, // passing token as an authorization header
+          },
+        }
+      );
+      console.log(response);
+      console.log(response.status);
+      if (response.status === 200 || response.status === 201) {
+        dispatch({ type: "PLAYLIST", payload: response.data.playlists });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const deletePlayList = async (playListId) => {
+    const encodedToken = localStorage.getItem("token");
+    try {
+      const response = await axios.delete(`/api/user/playlists/${playListId}`, {
+        headers: {
+          authorization: encodedToken, // passing token as an authorization header
+        },
+      });
+      if (response.status === 200 || response.status === 201) {
+        dispatch({ type: "PLAYLIST", payload: response.data.playlists });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return { getPlaylists, newPlayList, deletePlayList };
+};
+
+const usePlayListVideoActions = () => {
+  const { dispatch } = useDataValues();
+  // function for getting the initial data from the db
+  const getTheVideosOfPlayList = async (playListId) => {
+    const encodedToken = localStorage.getItem("token");
+    try {
+      const response = await axios.get(`/api/user/playlists/${playListId}`, {
+        headers: {
+          authorization: encodedToken, // passing token as an authorization header
+        },
+      });
+      if (response.status === 200 || response.status === 201) {
+        dispatch({ type: "PLAYLIST", payload: response.data.playlist });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // post the data in the playlist
+  const addVideoToPlayList = async (playListId, video) => {
+    const encodedToken = localStorage.getItem("token");
+    try {
+      const response = await axios.post(
+        `/api/user/playlists/${playListId}`,
+        {
+          video,
+        },
+        {
+          headers: {
+            authorization: encodedToken, // passing token as an authorization header
+          },
+        }
+      );
+      if (response.status === 200 || response.status === 201) {
+        console.log(response);
+        dispatch({ type: "PLAYLIST_VIDEO", payload: response.data.playlist });
+      }
+    } catch (error) {
+      console.log("Error in the accVideoToPlayList" + error);
+    }
+  };
+  const removeVideoFromPlaylist = async (videoId, playListId) => {
+    const encodedToken = localStorage.getItem("token");
+    try {
+      const response = await axios.delete(
+        `/api/user/playlists/${playListId}/${videoId}`,
+        {
+          headers: {
+            authorization: encodedToken,
+          },
+        }
+      );
+      dispatch({ type: "PLAYLIST_VIDEO", payload: response.data.playlist });
+    } catch (error) {
+      console.log("Error in remove video to playlist handler", error);
+    }
+  };
+  return {
+    getTheVideosOfPlayList,
+    addVideoToPlayList,
+    removeVideoFromPlaylist,
+  };
 };
 
 export {
@@ -280,4 +404,5 @@ export {
   useWatchLaterActions,
   useVideoHistory,
   usePlayListActions,
+  usePlayListVideoActions,
 };

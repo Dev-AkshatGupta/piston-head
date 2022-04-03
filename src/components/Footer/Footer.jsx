@@ -46,7 +46,7 @@ function Footer() {
         <li>Creators</li>
         <li>Advertise</li>
         <li>Developers</li>
-        <li>+YouTube</li>
+        <li>+Piston-Head</li>
       </ul>
 
       {/* <!-- Secondary Links Footer --> */}
