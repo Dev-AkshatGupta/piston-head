@@ -1,25 +1,19 @@
-import "./RecommendationCard.css";
-function RecommendationCard() {
+import "./RecomendationCard.css";
+import { Link } from "react-router-dom";
+function RecommendationCard({ contentPhotoUrl, thumbnail, creatorName,id }) {
   return (
     <div className="reccomendation text">
       <div className="preview">
-        <img
-          width="168"
-          alt="thumbnail"
-          src="https://i.ytimg.com/vi/1_HkEMasarg/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLCLjF1uWnDFoXDvCos4UuKnS8e6PA"
-        />
-        <div className="timestamp">1:33:48</div>
+        <img width="168" alt={thumbnail} src={contentPhotoUrl} />
       </div>
 
       <div className="info text">
-        <div className="title">Red Hot Chili Peppers Live Reading festival</div>
+        <Link to={`/singleVideo-page/${id}`}>
+          <div className="title">{thumbnail}</div>
+        </Link>
 
-        <div className="username">mike</div>
-        <div className="view-info">
-          <div>6.5M views</div>
-          <div>*</div>
-          <div>4 Years Ago</div>
-        </div>
+        <div className="username">{creatorName}</div>
+        <div className="view-info"></div>
       </div>
     </div>
   );

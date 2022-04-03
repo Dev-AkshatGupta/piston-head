@@ -5,7 +5,7 @@ import {
 } from "../../utilities/CustomHooks";
 import { useParams } from "react-router-dom";
 import "./SingleVideoPage.css";
-// import { RecommendationCard } from "../VideoSmallCard/HorizontalCard";
+import { RecommendationCard } from "../../components/RecommendationCard/RecommendationCard";
 function SingleVideoPage() {
   const { state } = useDataValues();
   const { likeVideo, disLikeVideo } = useLikeActions();
@@ -21,8 +21,9 @@ function SingleVideoPage() {
   const findWatchLaterIndex = state.watchLater.findIndex(
     (item) => item._id === id
   );
-
-  // const findWatchLaterIndex = -1;
+  const similarVideos = state.backUpData.filter(
+    (item) => item.categoryName === currentVideo.categoryName
+  );
   return (
     <div className="scroll">
       {/* <!-- Content --> */}
@@ -148,10 +149,15 @@ function SingleVideoPage() {
             </div>
           </div>
 
-          {/* <RecommendationCard />
-          <RecommendationCard />
-          <RecommendationCard />
-          <RecommendationCard /> */}
+          {similarVideos.map((item) => (
+            <RecommendationCard
+              key={item._id}
+              contentPhotoUrl={item.thumbnail.url}
+              thumbnail={item.title}
+              creatorName={item.creator}
+              id={item._id}
+            />
+          ))}
         </aside>
       </div>
     </div>
