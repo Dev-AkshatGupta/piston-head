@@ -10,4 +10,5 @@ function Page404() {
     </div>
   );
 }
+
 export { Page404 };

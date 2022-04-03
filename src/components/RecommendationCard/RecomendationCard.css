@@ -11,6 +11,8 @@
 .preview {
     position: relative;
     margin-right: 0.8rem;
+    height: 11.5rem;
+    width: 34.8rem;
 }
 
 .timestamp {
@@ -24,10 +26,14 @@
 }
 
 .title {
-    font-weight: bold;
-    font-size: 2rem;
+     font-size: 2rem;
     width: fit-content;
     text-align: left;
+ 
+     -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
 }
 
 .username {

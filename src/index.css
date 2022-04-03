@@ -256,3 +256,6 @@ html::-webkit-scrollbar-track {
   background: var(--ACCENT-COLOR-LIGHT);
   color: black;
 }
+.pointer{
+  cursor: pointer;
+}
