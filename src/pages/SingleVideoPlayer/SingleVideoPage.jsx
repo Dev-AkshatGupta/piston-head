@@ -77,7 +77,7 @@ function SingleVideoPage() {
                   <i className="material-icons md-dark">add</i>
                   {findWatchLaterIndex === -1 && (
                     <span onClick={() => makeWatchLater(currentVideo)}>
-                      Add to watchlater
+                      Add to watch-later
                     </span>
                   )}
                   {findWatchLaterIndex > -1 && (

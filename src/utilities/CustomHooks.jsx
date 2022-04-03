@@ -1,6 +1,9 @@
 import axios from "axios";
 import { useDataValues } from "../contextAndReducers/DataProvider";
 import { useAuthorization } from "../contextAndReducers/AuthProvider";
+const token = () => {
+  return token();
+};
 
 const useFetchingData = () => {
   const { dispatch } = useDataValues();
@@ -84,7 +87,7 @@ const useLikeActions = () => {
   const { dispatch } = useDataValues();
   // function for getting the initial data from the db
   const getLikedVideos = async () => {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = token();
     try {
       const response = await axios.get(`/api/user/likes`, {
         headers: {
@@ -100,7 +103,7 @@ const useLikeActions = () => {
   };
   // function making a post request to the backend
   const likeVideo = async (video) => {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = token();
     try {
       const response = await axios.post(
         `/api/user/likes`,
@@ -120,7 +123,7 @@ const useLikeActions = () => {
   };
   // function making a delete request to the backend
   const disLikeVideo = async (videoId) => {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = token();
     try {
       const response = await axios.delete(`/api/user/likes/${videoId}`, {
         headers: {
@@ -140,7 +143,7 @@ const useWatchLaterActions = () => {
   const { dispatch } = useDataValues();
   // function for getting the initial data from the db
   const getWatchLater = async () => {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = token();
     try {
       const response = await axios.get(`/api/user/watchlater`, {
         headers: {
@@ -157,7 +160,7 @@ const useWatchLaterActions = () => {
   };
   // function making a post request to the backend
   const makeWatchLater = async (video) => {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = token();
     try {
       const response = await axios.post(
         `/api/user/watchlater`,
@@ -179,7 +182,7 @@ const useWatchLaterActions = () => {
   };
   // function making a delete request to the backend
   const deleteFromWatchLater = async (videoId) => {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = token();
     try {
       const response = await axios.delete(`/api/user/watchlater/${videoId}`, {
         headers: {
@@ -200,7 +203,7 @@ const useVideoHistory = () => {
   const { dispatch } = useDataValues();
   // to get the primary data of the history
   const getHistory = async () => {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = token();
     try {
       const response = await axios.get(`/api/user/history`, {
         headers: {
@@ -219,7 +222,7 @@ const useVideoHistory = () => {
   };
   // post request to the api
   const history = async (video) => {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = token();
     try {
       const response = await axios.post(
         `/api/user/history`,
@@ -240,7 +243,7 @@ const useVideoHistory = () => {
     }
   };
   const deleteHistory = async (videoId) => {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = token();
     try {
       const response = await axios.delete(`/api/user/history/${videoId}`, {
         headers: {
@@ -256,7 +259,7 @@ const useVideoHistory = () => {
     }
   };
   const deleteAllHistory = async () => {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = token();
     try {
       const response = await axios.delete(`/api/user/history/all`, {
         headers: {
@@ -278,7 +281,7 @@ const usePlayListActions = () => {
   const { dispatch } = useDataValues();
   // function for getting the initial data from the db
   const getPlaylists = async () => {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = token();
     try {
       const response = await axios.get(`/api/user/playlists`, {
         headers: {
@@ -293,7 +296,7 @@ const usePlayListActions = () => {
     }
   };
   const newPlayList = async (title, description) => {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = token();
     try {
       const response = await axios.post(
         `/api/user/playlists`,
@@ -316,7 +319,7 @@ const usePlayListActions = () => {
     }
   };
   const deletePlayList = async (playListId) => {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = token();
     try {
       const response = await axios.delete(`/api/user/playlists/${playListId}`, {
         headers: {
@@ -337,7 +340,7 @@ const usePlayListVideoActions = () => {
   const { dispatch } = useDataValues();
   // function for getting the initial data from the db
   const getTheVideosOfPlayList = async (playListId) => {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = token();
     try {
       const response = await axios.get(`/api/user/playlists/${playListId}`, {
         headers: {
@@ -353,7 +356,7 @@ const usePlayListVideoActions = () => {
   };
   // post the data in the playlist
   const addVideoToPlayList = async (playListId, video) => {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = token();
     try {
       const response = await axios.post(
         `/api/user/playlists/${playListId}`,
@@ -375,7 +378,7 @@ const usePlayListVideoActions = () => {
     }
   };
   const removeVideoFromPlaylist = async (videoId, playListId) => {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = token();
     try {
       const response = await axios.delete(
         `/api/user/playlists/${playListId}/${videoId}`,
