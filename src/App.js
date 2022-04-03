@@ -13,23 +13,34 @@ import { PlayListModal } from "./components/PlayListModal/PlayListModal";
 import { useDataValues } from "./contextAndReducers/DataProvider";
 import {PlayListPage} from "./pages/PlayList/PlayListPage";
 import {Page404} from "./pages/Page-404/Page404";
+import { useAuthorization } from "./contextAndReducers/AuthProvider";
+import {Toast} from "./components/toast/Toast";
 import axios from "axios";
 function App() {
 const {modalDisplay, setModalDisplay}=useDataValues();
-  useEffect(
-       async () => {
-      try {
-        const response = await axios.post("/api/auth/login", {
-              email: "adarshbalika@gmail.com",
-    password: "adarshBalika123",
-        });
-        console.log(response.data.foundUser);
-        localStorage.setItem("token", response.data.encodedToken);
-      } catch (error) {
-        console.log(error);
-      }
+const {authState,authDispatch }=useAuthorization();
+useEffect(()=>{
+ 
+const timeoutID= setTimeout(()=> {authDispatch({
+        type: "TOAST",
+        payload: { display:"none", message: "", type: "" },
+   
+      });clearTimeout(timeoutID)},2000)
+},[authState.toast.display])
+  // useEffect(
+  //      async () => {
+  //     try {
+  //       const response = await axios.post("/api/auth/login", {
+  //             email: "adarshbalika@gmail.com",
+  //   password: "adarshBalika123",
+  //       });
+  //       console.log(response.data.foundUser);
+  //       localStorage.setItem("token", response.data.encodedToken);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
   
-  },[])
+  // },[])
   return (
     <div className="App">
       {modalDisplay&&
