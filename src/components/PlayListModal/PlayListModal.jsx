@@ -10,8 +10,10 @@ function PlayListModal() {
   const [details, setDetails] = useState({ title: "", description: "" });
   const { state, modalDisplay, setModalDisplay } = useDataValues();
   const videoObj = state.currentPlayingVideo;
-  const { addVideoToPlayList } = usePlayListVideoActions();
+  const { addVideoToPlayList, removeVideoFromPlaylist } =
+    usePlayListVideoActions();
   const { newPlayList } = usePlayListActions();
+
   return (
     <div className="modal-for-playlist">
       <div className="playlist-form">
@@ -27,15 +29,21 @@ function PlayListModal() {
 
         {state.playlistArr.map((item) => {
           return (
-            <div className="flex-center margin-bottom-1">
-              <button
-                className="btn btn-pri padding-5-10"
-                onClick={() => {
-                  addVideoToPlayList(item._id, videoObj);
-                }}
-              >
+            <div className="flex-center margin-bottom-1" key={item._id}>
+              <label className="text">
+                <input
+                  type="checkbox"
+                  name="playlistName"
+                  id=""
+                  checked={item.videos.some((obj) => obj._id === videoObj._id)}
+                  onChange={() =>
+                    item.videos.some((obj) => obj._id === videoObj._id)
+                      ? removeVideoFromPlaylist(videoObj._id, item._id)
+                      : addVideoToPlayList(item._id, videoObj)
+                  }
+                />
                 {item.title}
-              </button>
+              </label>
             </div>
           );
         })}
@@ -44,8 +52,8 @@ function PlayListModal() {
         </label>
         <input
           type="text"
-          title=""
-          id=""
+          title="title"
+          value={details.title}
           onChange={(e) => setDetails({ ...details, title: e.target.value })}
         />
         <label htmlFor="Description" className="text">
@@ -53,8 +61,8 @@ function PlayListModal() {
         </label>
         <input
           type="text"
-          title=""
-          id=""
+          title="description"
+          value={details.description}
           onChange={(e) =>
             setDetails({ ...details, description: e.target.value })
           }
