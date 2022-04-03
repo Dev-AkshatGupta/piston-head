@@ -259,3 +259,7 @@ html::-webkit-scrollbar-track {
 .pointer{
   cursor: pointer;
 }
+.banner-upper-empty {
+    height: 12rem;
+    width: 10%;
+}

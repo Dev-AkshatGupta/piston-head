@@ -13,6 +13,8 @@ import { PlayListModal } from "./components/PlayListModal/PlayListModal";
 import { useDataValues } from "./contextAndReducers/DataProvider";
 import {PlayListPage} from "./pages/PlayList/PlayListPage";
 import {Page404} from "./pages/Page-404/Page404";
+import { SignUpPage } from "./pages/SignUpPage/SignUpPage";
+import { LogInPage } from "./pages/Log-In-Page/LogInPage";
 import axios from "axios";
 function App() {
 const {modalDisplay, setModalDisplay}=useDataValues();
@@ -45,7 +47,8 @@ const {modalDisplay, setModalDisplay}=useDataValues();
         <Route path="/mock" element={<Mockman/>}/>
         <Route path="/playlist-page/:id" element={<PlayListPage/>}/>
         <Route path="*" element={<Page404/>}/>
-        
+        <Route path="/signUp-Page" element={<SignUpPage/>}/>
+        <Route path="/logIn-Page" element={<LogInPage/>}/>
         {/* <Route path" */}
       </Routes>
     <Footer/>
