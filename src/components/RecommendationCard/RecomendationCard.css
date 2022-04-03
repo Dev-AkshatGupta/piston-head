@@ -1,0 +1,36 @@
+.reccomendation {
+    display: flex;
+    cursor: pointer;
+}
+
+.view-info {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.preview {
+    position: relative;
+    margin-right: 0.8rem;
+}
+
+.timestamp {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: black;
+    color: white;
+    padding: 0.24rem;
+    border-radius: 0.4rem;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 2rem;
+    width: fit-content;
+    text-align: left;
+}
+
+.username {
+    font-size: 1.76rem;
+    text-align: left;
+}

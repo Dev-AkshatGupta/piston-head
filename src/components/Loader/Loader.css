@@ -1,0 +1,21 @@
+.loader {
+    margin: 200px auto;
+    border: 15px solid var(--DARK-GREY);
+    width: 150px;
+    height: 150px;
+    border-top-color: #f39c12;
+    border-bottom-color: #f39c12;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

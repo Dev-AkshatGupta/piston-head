@@ -1,0 +1,453 @@
+.align-left {
+    text-align: left;
+}
+
+.app-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.scroll {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.content,
+footer {
+    display: flex;
+    flex-direction: column;
+}
+
+/*
+  ==========================
+  Flex Elements
+  ==========================
+*/
+
+.logo-container>*,
+.user-container>*,
+#nav-drawer>a,
+.media,
+.lead-btn-row,
+.lead-social-btn,
+.lead-voting-btn,
+.comment-btn-bar,
+.button-footer,
+.primary-links-footer,
+.secondary-links-footer {
+    display: flex;
+}
+
+.masthead,
+.content,
+.logo-container,
+.user-container,
+#nav-drawer>a,
+.comment-btn-bar>a,
+.lead-social-btn>a,
+.lead-voting-btn>a,
+.next-up-bar {
+    display: flex;
+    align-items: center;
+}
+
+.masthead,
+.lead-btn-row {
+    justify-content: space-between;
+}
+
+.aside-span {
+    display: block;
+}
+
+.lead-view-count {
+    align-self: flex-end;
+}
+
+.media {
+    align-items: flex-start;
+}
+
+.media-body {
+    flex: 1;
+}
+
+button,
+li {
+    flex: none;
+}
+
+button {
+    display: flex;
+    align-items: center;
+}
+
+.next-up-bar> :first-child {
+    flex: 1;
+}
+
+.search {
+    display: flex;
+    flex: 1;
+    margin-left: 0.8rem;
+}
+
+.search-input {
+    flex: 1;
+    max-width: 550px;
+}
+
+.search-input {
+    border-radius: 2px 0 0 2px;
+    border: 1px solid #e2e2e2;
+}
+
+.search-button {
+    border-radius: 0 2px 2px 0;
+    border-left: 0;
+    margin: 0;
+}
+
+/* 
+  ==========================
+  Spacing & Margin
+  ==========================
+*/
+
+.main,
+.aside {
+    width: 400px;
+}
+
+
+.comments,
+.btn-upload,
+.btn-notifications {
+    display: none;
+}
+
+.main>*,
+aside {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.media-figure {
+    margin-right: 1em;
+}
+
+.scroll a,
+.scroll button {
+    margin: 0 0.4rem;
+}
+
+.scroll ul,
+.scroll li {
+    margin: 0.4rem;
+}
+
+.up-next {
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.bg-style {
+    padding: 0.8rem;
+}
+
+.aside>div {
+    padding: 0.8rem 0;
+}
+
+.comment-filter {
+    margin: 1.2rem 0 1.2rem 0;
+}
+
+.comment-filter>i {
+    padding-right: 0;
+}
+
+.media-body>h3 {
+    margin-top: 0;
+    margin-bottom: 0.64rem;
+}
+
+.scroll hr {
+    border: 1px solid #e2e2e2;
+    border-bottom: 0;
+    margin-top: 1.6rem;
+}
+
+.next-up-bar> :nth-child(2) {
+    margin-right: 0.8rem;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+/* 
+  ==========================
+  Typography
+  ==========================
+*/
+
+.scroll h1,
+.scroll h3,
+.scroll h5,
+.scroll p,
+.scroll a,
+.scroll span,
+.scroll button,
+.scroll textarea,
+.scroll li {
+    font-family: "Roboto", sans-serif;
+}
+
+.scroll h1,
+.scroll h3,
+.scroll h5,
+.scroll p,
+.scroll li {
+    color: #212121;
+}
+
+.scroll h1 {
+    font-size: 2.4rem;
+    /* 24px */
+    font-weight: 400;
+}
+
+.scroll h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.scroll h5 {
+    font-size: 1.28rem;
+    margin: 0.64rem 0;
+}
+
+.scroll p,
+.scroll li,
+.scroll textarea {
+    font-size: 1.2rem;
+    /* 12px */
+}
+
+.scroll textarea {
+    border: 1px solid #e2e2e2;
+    line-height: 2;
+}
+
+.scroll span {
+    color: #767676;
+    font-size: 1.1rem;
+    /* 11px/16=.6875 */
+}
+
+.lead-view-count {
+    font-size: 1.9rem;
+    font-weight: 400;
+}
+
+.username {
+    font-weight: 500;
+    color: #167ac6;
+}
+
+.scroll a>span,
+.scroll li {
+    font-weight: 500;
+}
+
+.terms>li {
+    font-size: 1.1rem;
+    color: #767676;
+}
+
+li:hover {
+    text-decoration: underline;
+    color: #167ac6;
+}
+
+.scroll strong {
+    font-weight: 500;
+}
+
+.scroll button>span {
+    font-weight: 500;
+    color: #333;
+}
+
+.footer-btn {
+    font-weight: 400;
+}
+
+.scroll i {
+    padding-right: 0.64rem;
+}
+
+/* 
+  ==========================
+  Buttons & Links
+  ==========================
+*/
+
+.scroll li {
+    list-style-type: none;
+}
+
+.scroll button {
+    border: 1px solid lightgrey;
+    background: #f8f8f8;
+    border-radius: 2px;
+}
+
+.subscribe {
+    display: flex;
+}
+
+.subscribe-btn {
+    background: var(--ICONS-ORANGE);
+    margin: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0;
+    border: none;
+}
+
+.subscribe-btn>span {
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.subscribe-count {
+    border-radius: 0 2px 2px 0;
+    border-left: 0;
+    font-weight: 400;
+    font-size: 1.2rem;
+    border: 1px solid lightgrey;
+    background: #f8f8f8;
+    padding: 0.512rem;
+}
+
+.btn-flat {
+    text-align: center;
+    padding-top: 0.8rem;
+    border-top: 1px solid #e2e2e2;
+}
+
+
+
+
+
+/* 
+  ==========================
+  Switch
+  ==========================
+*/
+
+.switch-container {
+    cursor: pointer;
+    position: relative;
+}
+
+.switch-bar {
+    cursor: grab;
+    background: rgb(22, 122, 198);
+    width: 31px;
+    height: 14px;
+    border-radius: 8px;
+}
+
+.switch-circle {
+    position: absolute;
+    top: 1px;
+    left: 18px;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+        0 2px 1px -1px rgba(0, 0, 0, 0.12);
+    background-color: #fff;
+    z-index: 4;
+}
+
+/* 
+  ==========================
+  Images
+  ==========================
+*/
+iframe {
+    width: 400px;
+    height: 240px;
+}
+
+.img-profile {
+    height: 48px;
+    width: 48px;
+}
+
+.img-aside {
+    width: 120px;
+    height: 90px;
+}
+.material-icons.md-dark.md-18.liked {
+    color:var(--ICONS-ORANGE)
+}
+
+/* 
+  ==========================
+  Medium Screens
+  ==========================
+*/
+
+@media all and (min-width: 650px) {
+    .content {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .aside {
+        width: 350px;
+        flex: none;
+    }
+
+    .main {
+        width: 640px;
+        flex: none;
+        margin-right: 8px;
+    }
+
+    iframe {
+        width: 640px;
+        height: 350px;
+    }
+
+    .btn-upload,
+    .btn-notifications,
+    .comments {
+        display: block;
+    }
+
+    .search {
+        margin-left: 6.4rem;
+    }
+}
+
+/* 
+  ==========================
+  Large Screens
+  ==========================
+*/
+
+@media all and (min-width: 1000px) {
+    .content {
+        justify-content: center;
+    }
+}
