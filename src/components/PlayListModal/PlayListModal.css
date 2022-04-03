@@ -13,5 +13,5 @@ position: fixed;
 .playlist-form{
 background-color:var(--ACCENT-COLOR-LIGHT);
 width: 20rem;
-/* opacity: 100%; */
+
 }

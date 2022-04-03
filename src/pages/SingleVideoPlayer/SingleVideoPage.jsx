@@ -76,12 +76,18 @@ function SingleVideoPage() {
                 <a>
                   <i className="material-icons md-dark">add</i>
                   {findWatchLaterIndex === -1 && (
-                    <span onClick={() => makeWatchLater(currentVideo)}>
+                    <span
+                      className="pointer"
+                      onClick={() => makeWatchLater(currentVideo)}
+                    >
                       Add to watch-later
                     </span>
                   )}
                   {findWatchLaterIndex > -1 && (
-                    <span onClick={() => deleteFromWatchLater(id)}>
+                    <span
+                      className="pointer"
+                      onClick={() => deleteFromWatchLater(id)}
+                    >
                       Remove from watchLater
                     </span>
                   )}
