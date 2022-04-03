@@ -30,6 +30,7 @@ const DataProvider = ({ children }) => {
           const modifiedData = state.backUpData.filter(
             (item) => item.categoryName === action.payload
           );
+
           return {
             ...state,
             data: modifiedData,
