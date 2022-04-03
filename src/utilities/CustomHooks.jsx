@@ -17,7 +17,7 @@ const useFetchingData = () => {
       console.log(error);
     }
   }
-  
+
   async function fetchCategoriesData() {
     try {
       const { data } = await axios.get("/api/categories");
@@ -310,7 +310,7 @@ const usePlayListActions = () => {
           },
         }
       );
-  
+
       if (response.status === 200 || response.status === 201) {
         dispatch({ type: "PLAYLIST", payload: response.data.playlists });
       }
@@ -370,7 +370,6 @@ const usePlayListVideoActions = () => {
         }
       );
       if (response.status === 200 || response.status === 201) {
-     
         dispatch({ type: "PLAYLIST_VIDEO", payload: response.data.playlist });
       }
     } catch (error) {
