@@ -19,16 +19,18 @@ const DataProvider = ({ children }) => {
           backUpData: action.payload,
           Loader: false,
         };
-        case "CATEGORY_DATA":
-          return {
-            ...state,
-            categories:action.payload,
-          };
+      case "CATEGORY_DATA":
+        return {
+          ...state,
+          categories: action.payload,
+        };
+
       case "category":
         if (action.payload !== "Home") {
           const modifiedData = state.backUpData.filter(
             (item) => item.categoryName === action.payload
           );
+
           return {
             ...state,
             data: modifiedData,
@@ -90,7 +92,7 @@ const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
     data: [],
     backUpData: [],
-    categories:[],
+    categories: [],
     Loader: true,
     aside: true,
     currentPlayingVideo: {},

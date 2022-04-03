@@ -21,7 +21,8 @@ function ExplorePage() {
     fetchCategoriesData();
     getLikedVideos();
     getHistory();
-  }, []);
+  }, []);  
+  
   return (
     <div>
       <FilterArea />
