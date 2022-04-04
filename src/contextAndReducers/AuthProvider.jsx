@@ -15,7 +15,6 @@ const AuthProvider = ({ children }) => {
   const reducer = (state, action) => {
     switch (action.type) {
       case "SIGN_IN":
-        console.log(action.payload);
         return {
           ...state,
           firstName: action.payload.createdUser.firstName,
@@ -28,7 +27,6 @@ const AuthProvider = ({ children }) => {
         };
 
       case "LOG_IN":
-        console.log(action.payload);
         return {
           ...state,
           firstName: action.payload.foundUser.firstName,
