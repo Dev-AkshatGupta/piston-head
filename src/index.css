@@ -23,7 +23,9 @@
   --btn-hover-bg: #d5d9f6;
   --btn-color: #1e2641;
 }
-
+body{
+  font-family: "Roboto", sans-serif ;
+}
 /* default and resetting */
 
 li {
@@ -262,4 +264,13 @@ html::-webkit-scrollbar-track {
 .banner-upper-empty {
     height: 12rem;
     width: 10%;
+}
+.position-relative{
+  position:relative;
+}
+.padding-main{
+padding-top: 2rem;
+padding-bottom: 2rem;
+padding-left: .5rem;
+padding-right:.5rem ;
 }

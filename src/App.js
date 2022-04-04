@@ -42,7 +42,7 @@ const timeoutID= setTimeout(()=> {authDispatch({
         <Route path="/" element={<ExplorePage/>}/>
         <Route path="/singleVideo-page/:source" element={<SingleVideoPage/>}/>
         <Route path="/watchLater-page" element ={<PrivateRoute><WatchLater/></PrivateRoute>}/>
-        <Route path="/history-page" element ={< History/>}/>
+        <Route path="/history-page" element ={ <PrivateRoute>< History/></PrivateRoute>}/>
         <Route path="/mock" element={<Mockman/>}/>
        
           <Route path="/playlist-page/:id" element={ <PrivateRoute><PlayListPage/></PrivateRoute>}/>
@@ -50,7 +50,7 @@ const timeoutID= setTimeout(()=> {authDispatch({
         <Route path="*" element={<Page404/>}/>
         <Route path="/signUp-Page" element={<SignUpPage/>}/>
         <Route path="/logIn-Page" element={<LogInPage/>}/>
-        {/* <Route path" */}
+      
       </Routes>
     <Footer/>
     </div>
