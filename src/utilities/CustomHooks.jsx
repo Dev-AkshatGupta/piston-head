@@ -43,15 +43,16 @@ const useUserDetails = () => {
       });
       // saving the encodedToken in the localStorage
       localStorage.setItem("token", response.data.encodedToken);
+
       authDispatch({
         type: "SIGN_IN",
-        value: response.data.foundUser,
+        payload: response.data,
       });
       authDispatch({
         type: "TOAST",
         payload: {
           display: "flex",
-          message: "User Signed in",
+          message: "User Signed Up",
           type: "success",
         },
       });
@@ -67,8 +68,7 @@ const useUserDetails = () => {
         password,
       });
       localStorage.setItem("token", response.data.encodedToken);
-      // console.log(response);
-      authDispatch({ type: "LOG_IN", payload: response.data.foundUser });
+      authDispatch({ type: "LOG_IN", payload: response.data });
       authDispatch({
         type: "TOAST",
         payload: {

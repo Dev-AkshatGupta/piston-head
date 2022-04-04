@@ -15,25 +15,24 @@ import {PlayListPage} from "./pages/PlayList/PlayListPage";
 import {Page404} from "./pages/Page-404/Page404";
 import { SignUpPage } from "./pages/SignUpPage/SignUpPage";
 import { LogInPage } from "./pages/Log-In-Page/LogInPage";
-import axios from "axios";
+import {Toast} from "./components/Toast/Toast";
+import { useAuthorization } from "./contextAndReducers/AuthProvider";
+import {PrivateRoute} from "./components/PrivateRoute/PrivateRoute";
 function App() {
 const {modalDisplay, setModalDisplay}=useDataValues();
-  useEffect(
-       async () => {
-      try {
-        const response = await axios.post("/api/auth/login", {
-              email: "adarshbalika@gmail.com",
-    password: "adarshBalika123",
-        });
-        console.log(response.data.foundUser);
-        localStorage.setItem("token", response.data.encodedToken);
-      } catch (error) {
-        console.log(error);
-      }
-  
-  },[])
+const {authState,authDispatch }=useAuthorization();
+useEffect(()=>{
+ 
+const timeoutID= setTimeout(()=> {authDispatch({
+        type: "TOAST",
+        payload: { display:"none", message: "", type: "" },
+   
+      });clearTimeout(timeoutID)},2000)
+},[authState.toast.display])
+ 
   return (
     <div className="App">
+         <Toast type={authState.toast.type} message={authState.toast.message} display={authState.toast.display} />
       {modalDisplay&&
       < PlayListModal/>
       }
@@ -42,10 +41,12 @@ const {modalDisplay, setModalDisplay}=useDataValues();
       <Routes>
         <Route path="/" element={<ExplorePage/>}/>
         <Route path="/singleVideo-page/:source" element={<SingleVideoPage/>}/>
-        <Route path="/watchLater-page" element ={<WatchLater/>}/>
+        <Route path="/watchLater-page" element ={<PrivateRoute><WatchLater/></PrivateRoute>}/>
         <Route path="/history-page" element ={< History/>}/>
         <Route path="/mock" element={<Mockman/>}/>
-        <Route path="/playlist-page/:id" element={<PlayListPage/>}/>
+       
+          <Route path="/playlist-page/:id" element={ <PrivateRoute><PlayListPage/></PrivateRoute>}/>
+        
         <Route path="*" element={<Page404/>}/>
         <Route path="/signUp-Page" element={<SignUpPage/>}/>
         <Route path="/logIn-Page" element={<LogInPage/>}/>
