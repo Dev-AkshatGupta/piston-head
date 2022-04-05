@@ -13,7 +13,8 @@ function LogInPage() {
     <>
       {token ? (
         <Navigate to={lastLocation} />
-      ) : (
+      ) : 
+      (
         <div className="flex-center-center padding-main">
           <LogInForm />
         </div>
