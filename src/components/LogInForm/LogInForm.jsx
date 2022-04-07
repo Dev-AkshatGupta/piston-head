@@ -18,7 +18,7 @@ function LogInForm() {
 
     logInHandler(details.email, details.password);
 
-    console.log("triggered");
+ 
   }
 
   return (
