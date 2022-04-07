@@ -5,7 +5,6 @@ import {  ExplorePage } from "./pages/ExplorePage/ExplorePage";
 import {NavBar} from "./components/NavBar/NavBar";
 import {Footer} from "./components/Footer/Footer";
 import {Aside} from "./components/aside/Aside";
-import { useEffect } from "react";
 import {SingleVideoPage} from "./pages/SingleVideoPlayer/SingleVideoPage";
 import { WatchLater } from "./pages/WatchLater/WatchLater";
 import { History } from "./pages/History/History"; 
@@ -15,7 +14,8 @@ import {PlayListPage} from "./pages/PlayList/PlayListPage";
 import {Page404} from "./pages/Page-404/Page404";
 import { SignUpPage } from "./pages/SignUpPage/SignUpPage";
 import { LogInPage } from "./pages/Log-In-Page/LogInPage";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import {ProfilePage} from "./pages/ProfilePage/ProfilePage";
 import { useAuthorization } from "./contextAndReducers/AuthProvider";
 import {PrivateRoute} from "./components/PrivateRoute/PrivateRoute";
 function App() {
@@ -40,7 +40,7 @@ const {authState,authDispatch }=useAuthorization();
        
           <Route path="/playlist-page/:id" element={ <PrivateRoute><PlayListPage/></PrivateRoute>}/>
         
-        
+          {authState.token && <Route path="/profile-page" element={<ProfilePage/>}/>}
         <Route path="/signUp-Page" element={<SignUpPage/>}/>
         <Route path="/logIn-Page" element={<LogInPage/>}/>
         <Route path="*" element={<Page404/>}/>

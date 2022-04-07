@@ -11,7 +11,6 @@ const useAuthorization = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
   //   reducer function for handling signUp and login
-
   const reducer = (state, action) => {
     switch (action.type) {
       case "SIGN_IN":
@@ -53,7 +52,7 @@ const AuthProvider = ({ children }) => {
     history: [],
     playlists: [],
     watchlater: [],
-    toast: { display: "none", message: "", type: "" },
+  
   });
 
   return (

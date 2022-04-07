@@ -1,9 +1,7 @@
 import React from "react";
-import { NavBar } from "../../components/navigation/NavBar";
-import { Footer } from "../../components/footer/Footer";
-import { ProfileCard } from "../../components/DifferentCards/ProfileCard/ProfileCard";
+import { ProfileCard } from "../../components/ProfileCard/ProfileCard";
 import { Link } from "react-router-dom";
-import { useAuthorization } from "../contextsAndReducer/AuthProvider";
+import { useAuthorization } from "../../contextAndReducers/AuthProvider";
 
 function ProfilePage() {
   const {
@@ -11,12 +9,12 @@ function ProfilePage() {
   } = useAuthorization();
   return (
     <div>
-      <NavBar />
+  
       <div className="banner-upper-empty"></div>
       <div className="products-main">
         <ProfileCard name={firstName} />
       </div>
-      <Footer />
+
     </div>
   );
 }

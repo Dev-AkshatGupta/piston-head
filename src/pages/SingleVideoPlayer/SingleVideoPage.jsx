@@ -8,14 +8,15 @@ import { useParams } from "react-router-dom";
 import "./SingleVideoPage.css";
 import { RecommendationCard } from "../../components/RecommendationCard/RecommendationCard";
 import axios from "axios";
+import { useAuthorization } from "../../contextAndReducers/AuthProvider";
 function SingleVideoPage() {
   const { state } = useDataValues();
   const { likeVideo, disLikeVideo } = useLikeActions();
   const { makeWatchLater, deleteFromWatchLater } = useWatchLaterActions();
   const [loading, setLoading] = useState(true);
-  // id of the object which is playing now
+  // id of the video object which is playing now
   const { source } = useParams();
-
+  const { authState: token } = useAuthorization();
   const [currentVideo, setCurrentVideo] = useState({});
   useEffect(() => {
     (async () => {
@@ -23,7 +24,7 @@ function SingleVideoPage() {
         const {
           data: { video },
         } = await axios.get(`/api/video/${source}`);
-     
+
         setCurrentVideo(video);
         setLoading(false);
       } catch (error) {
@@ -99,13 +100,17 @@ function SingleVideoPage() {
                 <div className="lead-social-btn">
                   <a>
                     <i className="material-icons md-dark">add</i>
-                    {findWatchLaterIndex === -1 && (
+                    {findWatchLaterIndex === -1 && token ? (
                       <span
                         className="pointer"
                         onClick={() => makeWatchLater(currentVideo)}
                       >
                         Add to watch-later
                       </span>
+                    ) : (
+                      findWatchLaterIndex === -1 && (
+                        <Link to="/logIn-page"> Add to watch-later</Link>
+                      )
                     )}
                     {findWatchLaterIndex > -1 && (
                       <span
