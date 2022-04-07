@@ -21,7 +21,7 @@ function SignUpForm() {
       details.email,
       details.password
     );
-    console.log("triggered");
+
   }
   const [viewPassword, setViewPassword] = useState(false);
   return (

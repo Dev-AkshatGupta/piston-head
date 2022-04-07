@@ -43,7 +43,9 @@
     /* position: fixed; */
     width: 100%;
 }
-
+.logo-text{
+font-size:2rem;
+}
 .logo-container {
     display: flex;
     align-items: center;
@@ -105,3 +107,20 @@ https://drive.google.com/file/d/1hqOaKm0Pb_iaUwd3sVpefoINmgGXbPVq/view?usp=shari
     background-size: cover;
     border-radius: 50%;
 }
+.user-container .DropDown{
+    padding:1rem 1rem;
+    display: flex;
+    align-items:center ;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 10rem;
+    font-size: 16px;
+    position: absolute;
+    bottom:-120px;
+    background-color: var( --color-smooth);
+    z-index: 11;
+    width: 10rem;
+    
+    
+}
+ .hide-dropdown{transform: translate3d(-100%, 0, 0) !important;}

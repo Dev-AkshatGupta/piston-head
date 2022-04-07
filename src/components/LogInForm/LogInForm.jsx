@@ -18,7 +18,7 @@ function LogInForm() {
 
     logInHandler(details.email, details.password);
 
-    console.log("triggered");
+ 
   }
 
   return (
@@ -68,7 +68,9 @@ function LogInForm() {
       </button>
       <button
         className="btn btn-outline-pri form-btn smooth-square-radius "
-        onClick={(e) => logInHandler("adarshbalika@gmail.com", "adarshbalika")}
+        onClick={(e) =>{e.preventDefault();
+          logInHandler("adarshbalika@gmail.com", "adarshBalika123")}
+        }
       >
         Guest Log-In
       </button>

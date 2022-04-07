@@ -1,4 +1,4 @@
-import {v4 as uuid} from "uuid";
+
 /**
  * Videos Database can be added here.
  * You can add videos of your wish with different attributes
@@ -6,7 +6,7 @@ import {v4 as uuid} from "uuid";
 export const videos = 
 [
 {
-    _id: uuid(),
+    _id: "E8GzE_pMsWU?start=122",
       src:"https://www.youtube.com/embed/E8GzE_pMsWU?start=122" ,
     categoryName: "American Classics",
     creator: "MotorTrend Channel",
@@ -24,7 +24,7 @@ export const videos =
     
   },
 {
-    _id: uuid(),
+    _id:"8HP5COGRfC0",
      src:"https://www.youtube.com/embed/8HP5COGRfC0",
     categoryName: "American Classics",
     creator: "MotorTrend Channel",
@@ -42,7 +42,7 @@ export const videos =
     
   },
 {
-    _id: uuid(),
+    _id: "pq8nKiS2Zxg?start=1",
      src:"https://www.youtube.com/embed/pq8nKiS2Zxg?start=1" ,
     categoryName: "Bikes",
     creator: "History",
@@ -60,7 +60,7 @@ export const videos =
     
   },
 {
-    _id: uuid(),
+    _id:"R5XMKUOm0pk",
      src:"https://www.youtube.com/embed/R5XMKUOm0pk" ,
     categoryName: "Bikes",
     creator: "History",
@@ -78,7 +78,7 @@ export const videos =
     
   },
 {
-    _id: uuid(),
+    _id: "E3nfUuQWyRM",
      src:"https://www.youtube.com/embed/E3nfUuQWyRM" ,
     categoryName: "Bikes",
     creator: "History",
@@ -97,7 +97,7 @@ export const videos =
   },
 
 {
-    _id: uuid(),
+    _id: "R_jY1InrTys",
     categoryName: "Bikes",
      src:"https://www.youtube.com/embed/R_jY1InrTys",
     creator: "History",
@@ -115,7 +115,7 @@ export const videos =
     
   },
 {
-    _id: uuid(),
+    _id:"_tMzf2L-osg",
      src:"https://www.youtube.com/embed/_tMzf2L-osg" ,
     categoryName: "American Classics",
     creator: "MotorTrend Channel",
@@ -133,7 +133,7 @@ export const videos =
     
   },
 {
-    _id: uuid(),
+    _id: "6oDndmNFO5I?start=12",
      src:"https://www.youtube.com/embed/6oDndmNFO5I?start=12"  ,
     categoryName: "Car Reviews",
     creator: "Fuel Injected",
@@ -152,7 +152,7 @@ export const videos =
   },
 
  {
-    _id: uuid(),
+    _id: "IRwEYAq9SwE",
      src:"https://www.youtube.com/embed/IRwEYAq9SwE" ,
     categoryName: "Car Reviews",
     creator: "Faisal Khan",
@@ -172,7 +172,7 @@ export const videos =
 
 
  {
-    _id: uuid(),
+    _id:"rXdxTdNRGic",
      src:"https://www.youtube.com/embed/rXdxTdNRGic" ,
     categoryName: "Car Reviews",
     creator: "Faisal Khan",
@@ -191,7 +191,7 @@ export const videos =
   },
 
   {
-    _id: uuid(),
+    _id: "Yzs4g8vqs4M",
      src:"https://www.youtube.com/embed/Yzs4g8vqs4M",
     categoryName: "Car Reviews",
     creator: "Faisal Khan",
@@ -209,7 +209,7 @@ export const videos =
     
   },
 {
-    _id: uuid(),
+    _id:"G2KK-x0O0cY",
      src:"https://www.youtube.com/embed/G2KK-x0O0cY" ,
     categoryName: "Car Reviews",
     creator: "Faisal Khan",
@@ -227,7 +227,7 @@ export const videos =
     
   },
 {
-    _id: uuid(),
+    _id: "GmaRqbqI-8M",
      src:"https://www.youtube.com/embed/GmaRqbqI-8M" ,
     categoryName: "Custom",
     creator: "PowerDrift",
@@ -245,7 +245,7 @@ export const videos =
     
   },
 {
-    _id: uuid(),
+    _id: "RL13JPhDiII",
      src:"https://www.youtube.com/embed/RL13JPhDiII"  ,
     categoryName: "Custom",
     creator: "PowerDrift",
@@ -263,7 +263,7 @@ export const videos =
     
   },
 {
-    _id: uuid(),
+    _id: "nzkPpIdEbvo",
     src:"https://www.youtube.com/embed/nzkPpIdEbvo" ,
     categoryName: "Repairs",
     creator: "DDS",
@@ -282,7 +282,7 @@ export const videos =
   },
 
 {
-    _id: uuid(),
+    _id: "Pz8IGLgFE2s",
      src:"https://www.youtube.com/embed/Pz8IGLgFE2s" ,
     categoryName: "Cars Evolution",
     creator: "Donut Media",
@@ -299,7 +299,7 @@ export const videos =
     title: " Evolution of the Porsche 911 | Donut Media",
   },
 {
-    _id: uuid(),
+    _id: "11nLdduJzzI",
      src:"https://www.youtube.com/embed/11nLdduJzzI" ,
     categoryName: "Cars Evolution",
     creator: "Donut Media",
@@ -316,7 +316,7 @@ export const videos =
     title: "Evolution of the Honda Civic Hatch | Donut Media",
   },
 {
-    _id: uuid(),
+    _id: "nR3OdeqiEF8",
     src:"https://www.youtube.com/embed/nR3OdeqiEF8" ,
     categoryName: "Cars Evolution",
     creator: "Donut Media",

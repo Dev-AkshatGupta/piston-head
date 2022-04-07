@@ -1,15 +1,16 @@
+import { createContext, useContext, useReducer, useState } from "react";
 import {
-  createContext,
-  useContext,
-  useReducer,
-  useEffect,
-  useState,
-} from "react";
-
+  notifyError,
+  notifySuccess,
+  notifyInfo,
+  notifyWarn,
+} from "../utilities/Notifications";
+// import { useAuthorization } from "./AuthProvider";
 const DataContext = createContext();
 const useDataValues = () => useContext(DataContext);
 const DataProvider = ({ children }) => {
   const [modalDisplay, setModalDisplay] = useState(false);
+  // const {authState:{token}}=useAuthorization();
   function reducer(state, action) {
     switch (action.type) {
       case "DATA":
@@ -54,28 +55,31 @@ const DataProvider = ({ children }) => {
       case "HISTORY":
         return { ...state, historyList: action.payload };
       case "PLAYLIST":
-        console.log({ ...state, playlistArr: action.payload });
         return {
           ...state,
           playlistArr: action.payload,
         };
+      case "LOGGED_IN":
+        console.log(state);
+        return {
+          ...state,
+          watchlater: action.payload.foundUser.watchlater,
+          playlistArr: action.payload.foundUser.playlists,
+          historyList: action.payload.foundUser.history,
+          likedVideos: action.payload.foundUser.likes,
+        };
       case "PLAYLIST_VIDEO":
-        console.log("triggered");
         const findPlaylistIndex = state.playlistArr.findIndex(
           (item) => item._id === action.payload._id
         );
         if (findPlaylistIndex === -1) {
-          console.log({
-            ...state,
-            playlistArr: [...state.playlistArr, action.payload],
-          });
           return {
             ...state,
             playlistArr: [...state.playlistArr, action.payload],
           };
         } else {
           state.playlistArr.splice(findPlaylistIndex, 1, action.payload);
-          console.log(state.playlistArr);
+
           return {
             ...state,
             playlistArr: state.playlistArr,
@@ -103,7 +107,16 @@ const DataProvider = ({ children }) => {
 
   return (
     <DataContext.Provider
-      value={{ state, dispatch, modalDisplay, setModalDisplay }}
+      value={{
+        state,
+        dispatch,
+        modalDisplay,
+        setModalDisplay,
+        notifyError,
+        notifySuccess,
+        notifyInfo,
+        notifyWarn,
+      }}
     >
       {children}
     </DataContext.Provider>

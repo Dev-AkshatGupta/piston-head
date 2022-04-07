@@ -1,8 +1,11 @@
 import { useDataValues } from "../../contextAndReducers/DataProvider";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
+import { DropDownBox } from "./DropDownBox.jsx";
+import { useState } from "react";
 function NavBar() {
   const { dispatch } = useDataValues();
+  const [dropBox, setDropBox] = useState(false);
   return (
     <header className="masthead bg-style">
       {/* <!-- Masthead Logo --> */}
@@ -18,7 +21,7 @@ function NavBar() {
           <div className="logo text-accent text"></div>
         </Link>
         <Link to="/">
-          <div className="text-accent text">Piston-head</div>
+          <div className="text-accent logo-text">Piston-head</div>
         </Link>
       </div>
 
@@ -39,13 +42,10 @@ function NavBar() {
 
       {/* <!-- Masthead User --> */}
 
-      <div className="user-container">
-        <a href="/">
-          <i className="material-icons md-dark">notifications_none</i>
-        </a>
-        <a href="/">
-          <div className="btn-profile"></div>
-        </a>
+      <div className="user-container position-relative">
+        <div className="btn-profile" onClick={() => setDropBox(!dropBox)}></div>
+
+        {dropBox && <DropDownBox />}
       </div>
     </header>
   );

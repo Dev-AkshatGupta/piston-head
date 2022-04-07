@@ -1,11 +1,10 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route ,Navigate} from "react-router-dom";
 import Mockman from "mockman-js";
 import {  ExplorePage } from "./pages/ExplorePage/ExplorePage";
 import {NavBar} from "./components/NavBar/NavBar";
 import {Footer} from "./components/Footer/Footer";
 import {Aside} from "./components/aside/Aside";
-import { useEffect } from "react";
 import {SingleVideoPage} from "./pages/SingleVideoPlayer/SingleVideoPage";
 import { WatchLater } from "./pages/WatchLater/WatchLater";
 import { History } from "./pages/History/History"; 
@@ -15,25 +14,18 @@ import {PlayListPage} from "./pages/PlayList/PlayListPage";
 import {Page404} from "./pages/Page-404/Page404";
 import { SignUpPage } from "./pages/SignUpPage/SignUpPage";
 import { LogInPage } from "./pages/Log-In-Page/LogInPage";
-import axios from "axios";
+import { ToastContainer } from 'react-toastify';
+import {ProfilePage} from "./pages/ProfilePage/ProfilePage";
+import { useAuthorization } from "./contextAndReducers/AuthProvider";
+import {PrivateRoute} from "./components/PrivateRoute/PrivateRoute";
 function App() {
 const {modalDisplay, setModalDisplay}=useDataValues();
-  useEffect(
-       async () => {
-      try {
-        const response = await axios.post("/api/auth/login", {
-              email: "adarshbalika@gmail.com",
-    password: "adarshBalika123",
-        });
-        console.log(response.data.foundUser);
-        localStorage.setItem("token", response.data.encodedToken);
-      } catch (error) {
-        console.log(error);
-      }
-  
-  },[])
+const {authState,authDispatch }=useAuthorization();
+
+ 
   return (
     <div className="App">
+      <ToastContainer/>
       {modalDisplay&&
       < PlayListModal/>
       }
@@ -42,14 +34,17 @@ const {modalDisplay, setModalDisplay}=useDataValues();
       <Routes>
         <Route path="/" element={<ExplorePage/>}/>
         <Route path="/singleVideo-page/:source" element={<SingleVideoPage/>}/>
-        <Route path="/watchLater-page" element ={<WatchLater/>}/>
-        <Route path="/history-page" element ={< History/>}/>
+        <Route path="/watchLater-page" element ={<PrivateRoute><WatchLater/></PrivateRoute>}/>
+        <Route path="/history-page" element ={ <PrivateRoute>< History/></PrivateRoute>}/>
         <Route path="/mock" element={<Mockman/>}/>
-        <Route path="/playlist-page/:id" element={<PlayListPage/>}/>
-        <Route path="*" element={<Page404/>}/>
+       
+          <Route path="/playlist-page/:id" element={ <PrivateRoute><PlayListPage/></PrivateRoute>}/>
+        
+          {authState.token && <Route path="/profile-page" element={<ProfilePage/>}/>}
         <Route path="/signUp-Page" element={<SignUpPage/>}/>
         <Route path="/logIn-Page" element={<LogInPage/>}/>
-        {/* <Route path" */}
+        <Route path="*" element={<Page404/>}/>
+       <Route path="*" element={<Navigate to={authState.token ? "/profile-page":"/404-page"}/>}/>
       </Routes>
     <Footer/>
     </div>
