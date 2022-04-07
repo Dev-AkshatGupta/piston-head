@@ -15,7 +15,7 @@ function SingleVideoPage() {
   const [loading, setLoading] = useState(true);
   // id of the object which is playing now
   const { source } = useParams();
-  console.log(source);
+
   const [currentVideo, setCurrentVideo] = useState({});
   useEffect(() => {
     (async () => {
@@ -23,7 +23,7 @@ function SingleVideoPage() {
         const {
           data: { video },
         } = await axios.get(`/api/video/${source}`);
-        console.log(video);
+     
         setCurrentVideo(video);
         setLoading(false);
       } catch (error) {

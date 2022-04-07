@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route ,Navigate} from "react-router-dom";
 import Mockman from "mockman-js";
 import {  ExplorePage } from "./pages/ExplorePage/ExplorePage";
 import {NavBar} from "./components/NavBar/NavBar";
@@ -15,24 +15,17 @@ import {PlayListPage} from "./pages/PlayList/PlayListPage";
 import {Page404} from "./pages/Page-404/Page404";
 import { SignUpPage } from "./pages/SignUpPage/SignUpPage";
 import { LogInPage } from "./pages/Log-In-Page/LogInPage";
-import {Toast} from "./components/Toast/Toast";
+import { ToastContainer, toast } from 'react-toastify';
 import { useAuthorization } from "./contextAndReducers/AuthProvider";
 import {PrivateRoute} from "./components/PrivateRoute/PrivateRoute";
 function App() {
 const {modalDisplay, setModalDisplay}=useDataValues();
 const {authState,authDispatch }=useAuthorization();
-useEffect(()=>{
- 
-const timeoutID= setTimeout(()=> {authDispatch({
-        type: "TOAST",
-        payload: { display:"none", message: "", type: "" },
-   
-      });clearTimeout(timeoutID)},2000)
-},[authState.toast.display])
+
  
   return (
     <div className="App">
-         <Toast type={authState.toast.type} message={authState.toast.message} display={authState.toast.display} />
+      <ToastContainer/>
       {modalDisplay&&
       < PlayListModal/>
       }
@@ -47,10 +40,11 @@ const timeoutID= setTimeout(()=> {authDispatch({
        
           <Route path="/playlist-page/:id" element={ <PrivateRoute><PlayListPage/></PrivateRoute>}/>
         
-        <Route path="*" element={<Page404/>}/>
+        
         <Route path="/signUp-Page" element={<SignUpPage/>}/>
         <Route path="/logIn-Page" element={<LogInPage/>}/>
-      
+        <Route path="*" element={<Page404/>}/>
+       <Route path="*" element={<Navigate to={authState.token ? "/profile-page":"/404-page"}/>}/>
       </Routes>
     <Footer/>
     </div>

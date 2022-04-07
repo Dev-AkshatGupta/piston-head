@@ -6,13 +6,15 @@ const token = () => {
 };
 
 const useFetchingData = () => {
-  const { dispatch } = useDataValues();
+  const { dispatch, notifyError, notifySuccess, notifyInfo, notifyWarn } =
+    useDataValues();
   // Fetching initial value from the server
   async function fetchData() {
     try {
       const { data } = await axios.get("/api/videos");
 
       dispatch({ type: "DATA", payload: data.videos });
+     
     } catch (error) {
       console.log(error);
     }
@@ -33,6 +35,8 @@ const useFetchingData = () => {
 
 const useUserDetails = () => {
   const { authState, authDispatch } = useAuthorization();
+   const { dispatch, notifyError, notifySuccess, notifyInfo, notifyWarn } =
+     useDataValues();
   const signUpHandler = async (firstName, lastName, email, password) => {
     try {
       const response = await axios.post(`/api/auth/signup`, {
@@ -131,7 +135,7 @@ const useLikeActions = () => {
           authorization: encodedToken, // passing token as an authorization header
         },
       });
-      console.log(response);
+ 
       dispatch({ type: "LIKE", payload: response.data.likes });
     } catch (error) {
       console.log(error);
@@ -152,7 +156,7 @@ const useWatchLaterActions = () => {
         },
       });
       if (response.status === 200 || response.status === 201) {
-        console.log(response.data.watchlater);
+    
         dispatch({ type: "WATCH_LATER", payload: response.data.watchlater });
       }
     } catch (error) {
@@ -191,7 +195,7 @@ const useWatchLaterActions = () => {
         },
       });
       if (response.status === 200 || response.status === 201) {
-        console.log(response);
+        
         dispatch({ type: "WATCH_LATER", payload: response.data.watchlater });
       }
     } catch (error) {
@@ -252,7 +256,7 @@ const useVideoHistory = () => {
         },
       });
       if (response.status === 200 || response.status === 201) {
-        console.log(response);
+     
         dispatch({ type: "HISTORY", payload: response.data.history });
       }
     } catch (error) {
@@ -268,7 +272,7 @@ const useVideoHistory = () => {
         },
       });
       if (response.status === 200 || response.status === 201) {
-        console.log(response);
+       
         dispatch({ type: "HISTORY", payload: response.data.history });
       }
     } catch (error) {
