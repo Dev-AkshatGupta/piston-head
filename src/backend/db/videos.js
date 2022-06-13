@@ -5,8 +5,7 @@
  * */
 export const videos = 
 [
-{
-    _id: "E8GzE_pMsWU?start=122",
+{    _id: "E8GzE_pMsWU",
       src:"https://www.youtube.com/embed/E8GzE_pMsWU?start=122" ,
     categoryName: "American Classics",
     creator: "MotorTrend Channel",

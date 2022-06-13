@@ -17,8 +17,6 @@ function LogInForm() {
     e.preventDefault();
 
     logInHandler(details.email, details.password);
-
- 
   }
 
   return (
@@ -68,9 +66,10 @@ function LogInForm() {
       </button>
       <button
         className="btn btn-outline-pri form-btn smooth-square-radius "
-        onClick={(e) =>{e.preventDefault();
-          logInHandler("adarshbalika@gmail.com", "adarshBalika123")}
-        }
+        onClick={(e) => {
+          e.preventDefault();
+          logInHandler("guptaakshat105@gmail.com", "akshat105");
+        }}
       >
         Guest Log-In
       </button>
