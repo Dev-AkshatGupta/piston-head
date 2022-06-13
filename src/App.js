@@ -4,7 +4,7 @@ import Mockman from "mockman-js";
 import {  ExplorePage } from "./pages/ExplorePage/ExplorePage";
 import {NavBar} from "./components/NavBar/NavBar";
 import {Footer} from "./components/Footer/Footer";
-import {Aside} from "./components/aside/Aside";
+import {Aside} from "./components/Aside/Aside";
 import {SingleVideoPage} from "./pages/SingleVideoPlayer/SingleVideoPage";
 import { WatchLater } from "./pages/WatchLater/WatchLater";
 import { History } from "./pages/History/History"; 

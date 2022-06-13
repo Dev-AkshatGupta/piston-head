@@ -122,7 +122,7 @@ export function makeServer({ environment = "development" } = {}) {
         "/user/playlists/:playlistId/:videoId",
         removeVideoFromPlaylistHandler.bind(this)
       );
-
+      
       // history routes (private)
       this.get("/user/history", getHistoryVideosHandler.bind(this));
       this.post("/user/history", addVideoToHistoryHandler.bind(this));

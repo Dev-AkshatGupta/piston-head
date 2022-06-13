@@ -42,7 +42,7 @@ export const videos =
     
   },
 {
-    _id: "pq8nKiS2Zxg?start=1",
+    _id: "pq8nKiS2Zxg",
      src:"https://www.youtube.com/embed/pq8nKiS2Zxg?start=1" ,
     categoryName: "Bikes",
     creator: "History",
@@ -133,7 +133,7 @@ export const videos =
     
   },
 {
-    _id: "6oDndmNFO5I?start=12",
+    _id: "6oDndmNFO5I",
      src:"https://www.youtube.com/embed/6oDndmNFO5I?start=12"  ,
     categoryName: "Car Reviews",
     creator: "Fuel Injected",
