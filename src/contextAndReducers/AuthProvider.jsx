@@ -52,7 +52,6 @@ const AuthProvider = ({ children }) => {
     history: [],
     playlists: [],
     watchlater: [],
-  
   });
 
   return (
