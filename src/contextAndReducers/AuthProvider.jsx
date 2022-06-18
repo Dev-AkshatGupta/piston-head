@@ -1,8 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useReducer,
-} from "react";
+import React, { createContext, useContext, useReducer } from "react";
 
 const AuthContext = createContext();
 const useAuthorization = () => useContext(AuthContext);
@@ -21,7 +17,7 @@ const AuthProvider = ({ children }) => {
           history: action.payload.createdUser.history,
           likes: action.payload.createdUser.likes,
           token: action.payload.encodedToken,
-          currentUser: action.payload,
+          currentUser: action.payload.createdUser,
         };
 
       case "LOG_IN":
@@ -34,9 +30,21 @@ const AuthProvider = ({ children }) => {
           history: action.payload.foundUser.history,
           likes: action.payload.foundUser.likes,
           token: action.payload.encodedToken,
-          currentUser:action.payload
+          currentUser: action.payload.foundUser,
         };
 
+      case "VERIFY_USER":
+        return {
+          ...state,
+          firstName: action.payload.foundUser.firstName,
+          id: action.payload.foundUser.id,
+          watchlater: action.payload.foundUser.watchlater,
+          playlists: action.payload.foundUser.playlists,
+          history: action.payload.foundUser.history,
+          likes: action.payload.foundUser.likes,
+          token: action.payload.encodedToken,
+          currentUser: action.payload.foundUser,
+        };
       case "TOAST":
         return { ...state, toast: action.payload };
       default:
@@ -52,7 +60,7 @@ const AuthProvider = ({ children }) => {
     history: [],
     playlists: [],
     watchlater: [],
-    currentUser:{}
+    currentUser: {},
   });
 
   return (

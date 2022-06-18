@@ -3,7 +3,7 @@ import { useAuthorization } from "../../contextAndReducers/AuthProvider";
 
 function ProfileCard() {
 const {authState:{ currentUser:userDetails}}=useAuthorization();
-console.log(userDetails);
+
   return (
     <div className="profile-card__main">
       <h3 className="profile-card__heading">Profile Details</h3>

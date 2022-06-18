@@ -3,8 +3,8 @@
   padding:1rem 2rem ;
    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
    border-top:2px var(--ACCENT-COLOR) solid ;
+   text-align:left;
 }
 .profile-card__heading{
 border-bottom: solid var(--GREY) 3px;
-
 }
