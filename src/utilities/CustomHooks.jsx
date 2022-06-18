@@ -79,8 +79,7 @@ const useUserDetails = () => {
       try {
         const response = await axios.post("api/auth/verify", {
           encodedToken: encodedToken,
-        });
-       
+        });    
         authDispatch({ type: "VERIFY_USER", payload: response });
       } catch (error) {
         console.log(error.response);
@@ -248,6 +247,7 @@ const useVideoHistory = () => {
           },
         }
       );
+      console.log(response);
       if (response.status === 200 || response.status === 201) {
         dispatch({ type: "HISTORY", payload: response.data.history });
       }

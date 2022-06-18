@@ -24,7 +24,6 @@ function SingleVideoPage() {
         const {
           data: { video },
         } = await axios.get(`/api/video/${source}`);
-
         setCurrentVideo(video);
         setLoading(false);
       } catch (error) {
@@ -33,8 +32,7 @@ function SingleVideoPage() {
     })();
   }, []);
 
-  // const currentVideo =
-  //   state.data[state.data.findIndex((item) => item._id === source)];
+  
   const { creator, creatorLogo, src, title, _id: id } = currentVideo;
 
   const findLiked = state.likedVideos.findIndex((item) => item._id === id);

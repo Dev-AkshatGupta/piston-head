@@ -78,7 +78,9 @@ function App() {
         <Route path="/logIn-Page" element={<LogInPage />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
-      <Footer />
+      
+      //todo re-design the footer
+      {/* <Footer /> */}
     </div>
   );
 }
