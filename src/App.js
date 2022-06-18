@@ -18,10 +18,17 @@ import { ToastContainer } from "react-toastify";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { useAuthorization } from "./contextAndReducers/AuthProvider";
 import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
+import { useUserDetails } from "./utilities/CustomHooks";
+import React, { useEffect } from "react";
 function App() {
   const { modalDisplay, setModalDisplay } = useDataValues();
   const { authState, authDispatch } = useAuthorization();
-
+  const { verifyUserHandler } = useUserDetails();
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      verifyUserHandler();
+    }
+  }, []);
   return (
     <div className="App">
       <ToastContainer />

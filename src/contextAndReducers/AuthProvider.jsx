@@ -34,16 +34,17 @@ const AuthProvider = ({ children }) => {
         };
 
       case "VERIFY_USER":
+       const {encodedToken:token}=JSON.parse(action.payload.config.data);
         return {
           ...state,
-          firstName: action.payload.foundUser.firstName,
-          id: action.payload.foundUser.id,
-          watchlater: action.payload.foundUser.watchlater,
-          playlists: action.payload.foundUser.playlists,
-          history: action.payload.foundUser.history,
-          likes: action.payload.foundUser.likes,
-          token: action.payload.encodedToken,
-          currentUser: action.payload.foundUser,
+          firstName: action.payload.data.user.firstName,
+          id: action.payload.data.user.id,
+          watchlater: action.payload.data.user.watchlater,
+          playlists: action.payload.data.user.playlists,
+          history: action.payload.data.user.history,
+          likes: action.payload.data.user.likes,
+          token,
+          currentUser: action.payload.data.user,
         };
       case "TOAST":
         return { ...state, toast: action.payload };
