@@ -2,19 +2,15 @@ import React from "react";
 import { ProfileCard } from "../../components/ProfileCard/ProfileCard";
 import { Link } from "react-router-dom";
 import { useAuthorization } from "../../contextAndReducers/AuthProvider";
-
+import "./ProfilePage.css";
 function ProfilePage() {
-  const {
-    authState: { token, firstName },
-  } = useAuthorization();
+  const { authState } = useAuthorization();
   return (
     <div>
-  
       <div className="banner-upper-empty"></div>
-      <div className="products-main">
-        <ProfileCard name={firstName} />
+      <div className="profile-container__main">
+        <ProfileCard />
       </div>
-
     </div>
   );
 }

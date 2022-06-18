@@ -1,13 +1,15 @@
 import { useDataValues } from "./../../contextAndReducers/DataProvider";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
-import { DropDownBox } from "./DropDownBox.jsx";
 import { useState } from "react";
-import {debounce} from "./../../utilities/debounce";
+import { debounce } from "./../../utilities/debounce";
+import { CgProfile } from "react-icons/cg";
 function NavBar() {
   const { dispatch } = useDataValues();
-  const [dropBox, setDropBox] = useState(false);
-  const search = debounce((input)=>{dispatch({ type: "SEARCH", payload:input})},1500);
+
+  const search = debounce((input) => {
+    dispatch({ type: "SEARCH", payload: input });
+  }, 1500);
   return (
     <header className="masthead bg-style">
       {/* <!-- Masthead Logo --> */}
@@ -34,10 +36,7 @@ function NavBar() {
           className="search-input"
           type="search"
           autoSave="some_unique_value"
-          onChange={(e) =>
-            // dispatch({ type: "SEARCH", payload: e.target.value })
-            search(e.target.value)
-          }
+          onChange={(e) => search(e.target.value)}
         ></input>
         <button className="search-button">
           <i className="material-icons md-18 md-dark">search</i>
@@ -47,9 +46,11 @@ function NavBar() {
       {/* <!-- Masthead User --> */}
 
       <div className="user-container position-relative">
-        <div className="btn-profile" onClick={() => setDropBox(!dropBox)}></div>
-
-        {dropBox && <DropDownBox />}
+        <div className="btn-profile">
+          <Link to="/profile-page">
+            <CgProfile />
+          </Link>
+        </div>
       </div>
     </header>
   );

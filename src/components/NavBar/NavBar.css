@@ -100,12 +100,13 @@ https://drive.google.com/file/d/1hqOaKm0Pb_iaUwd3sVpefoINmgGXbPVq/view?usp=shari
 }
 
 .btn-profile {
-    background: url("https://yt3.ggpht.com/-xKakHjmg9Cg/AAAAAAAAAAI/AAAAAAAAAAA/-7SNTsiGgTE/s88-c-k-no/photo.jpg");
+    /* background: url("https://yt3.ggpht.com/-xKakHjmg9Cg/AAAAAAAAAAI/AAAAAAAAAAA/-7SNTsiGgTE/s88-c-k-no/photo.jpg"); */
     height: 27px;
     width: 27px;
     border: 0;
     background-size: cover;
     border-radius: 50%;
+    font-size: 27px;
 }
 .user-container .DropDown{
     padding:1rem 1rem;
