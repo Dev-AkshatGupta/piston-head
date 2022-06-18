@@ -18,19 +18,19 @@
 
 
 
-## Piston-Head - a Video Library for Piston Heads
+## Piston-Head - A Video Library for Piston Heads
 
 <div align="center">
 
-<img alt="Piston" src="./src/assets/starling.svg" width="1048px" height="238px" />
+<!-- <img alt="Piston" src="./src/assets/starling.svg" width="1048px" height="238px" /> -->
 
-Piston Parts is an e-Commerce website built with ReactJS. It offers accessories and parts for your lovely automobiles.
+Piston Head is video library which is dedicated to the gear heads a.k.a Piston Heads. 
 
 </div>
 
 ---
 
-## Live Website: [PistonParts](https://piston-parts-ecommerce.vercel.app/)
+## Live Website: [PistonHead]()
 
 ---
 
@@ -43,12 +43,10 @@ To view different pages of Piston Parts you can visit the following links:
 #### P0 Features
 
 - Home Page
-- Product Listing Page
-- Sort, Filters - Price, Category, Ratings
-- Cart Management
-- Wishlist Management
+- Video Listing Page
+- Watchlist Management
 - Authentication
-
+- 
 #### P1 Features
 
 - Search
