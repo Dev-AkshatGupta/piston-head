@@ -49,6 +49,7 @@ const AuthProvider = ({ children }) => {
       case "TOAST":
         return { ...state, toast: action.payload };
         case "LOG_OUT":
+          localStorage.removeItem("token")
           return {
             firstName: "",
             id: "",
