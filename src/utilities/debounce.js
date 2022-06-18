@@ -16,9 +16,9 @@ export function throttle(callbackfn, delay) {
     if (flag) {
       callbackfn.apply(context, args);
       flag = false;
-        setTimeout(() => {
-      flag = true;
-    }, delay);
+      setTimeout(() => {
+        flag = true;
+      }, delay);
     }
   };
 }

@@ -25,28 +25,61 @@ const {authState,authDispatch }=useAuthorization();
  
   return (
     <div className="App">
-      <ToastContainer/>
-      {modalDisplay&&
-      < PlayListModal/>
-      }
-      <NavBar/>
-      <Aside/>
+      <ToastContainer />
+      {modalDisplay && <PlayListModal />}
+      <NavBar />
+      <Aside />
       <Routes>
-        <Route path="/" element={<ExplorePage/>}/>
-        <Route path="/singleVideo-page/:source" element={<SingleVideoPage/>}/>
-        <Route path="/watchLater-page" element ={<PrivateRoute><WatchLater/></PrivateRoute>}/>
-        <Route path="/history-page" element ={ <PrivateRoute>< History/></PrivateRoute>}/>
-        <Route path="/mock" element={<Mockman/>}/>
-       
-          <Route path="/playlist-page/:id" element={ <PrivateRoute><PlayListPage/></PrivateRoute>}/>
-        
-          {authState.token && <Route path="/profile-page" element={<ProfilePage/>}/>}
-        <Route path="/signUp-Page" element={<SignUpPage/>}/>
-        <Route path="/logIn-Page" element={<LogInPage/>}/>
-        <Route path="*" element={<Page404/>}/>
-       <Route path="*" element={<Navigate to={authState.token ? "/profile-page":"/404-page"}/>}/>
+        <Route path="/" element={<ExplorePage />} />
+        <Route path="/singleVideo-page/:source" element={<SingleVideoPage />} />
+        <Route
+          path="/watchLater-page"
+          element={
+            <PrivateRoute>
+              <WatchLater />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/history-page"
+          element={
+            <PrivateRoute>
+              <History />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/mock" element={<Mockman />} />
+
+        <Route
+          path="/playlist-page/:id"
+          element={
+            <PrivateRoute>
+              <PlayListPage />
+            </PrivateRoute>
+          }
+        />
+
+  
+          <Route
+            path="/profile-page"
+            element={
+              <PrivateRoute>
+                <ProfilePage />
+              </PrivateRoute>
+            }
+          />
+ 
+        <Route path="/signUp-Page" element={<SignUpPage />} />
+        <Route path="/logIn-Page" element={<LogInPage />} />
+        <Route path="*" element={<Page404 />} />
+        <Route
+          path="*"
+          element={
+            <Navigate to={authState.token ? "/profile-page" : "/404-page"} />
+          }
+        />
       </Routes>
-    <Footer/>
+      <Footer />
     </div>
   );
 }

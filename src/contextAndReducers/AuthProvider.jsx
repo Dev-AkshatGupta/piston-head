@@ -1,9 +1,7 @@
 import React, {
   createContext,
   useContext,
-  useEffect,
   useReducer,
-  useState,
 } from "react";
 
 const AuthContext = createContext();
@@ -23,6 +21,7 @@ const AuthProvider = ({ children }) => {
           history: action.payload.createdUser.history,
           likes: action.payload.createdUser.likes,
           token: action.payload.encodedToken,
+          currentUser: action.payload,
         };
 
       case "LOG_IN":
@@ -35,6 +34,7 @@ const AuthProvider = ({ children }) => {
           history: action.payload.foundUser.history,
           likes: action.payload.foundUser.likes,
           token: action.payload.encodedToken,
+          currentUser:action.payload
         };
 
       case "TOAST":
@@ -52,6 +52,7 @@ const AuthProvider = ({ children }) => {
     history: [],
     playlists: [],
     watchlater: [],
+    currentUser:{}
   });
 
   return (
