@@ -1,9 +1,12 @@
 import "./ProfileCard.css";
 import { useAuthorization } from "../../contextAndReducers/AuthProvider";
-
+import { useNavigate } from "react-router-dom";
 function ProfileCard() {
-const {authState:{ currentUser:userDetails}}=useAuthorization();
-
+  const {
+    authState: { currentUser: userDetails },
+    authDispatch,
+  } = useAuthorization();
+  const navigate = useNavigate();
   return (
     <div className="profile-card__main">
       <h3 className="profile-card__heading">Profile Details</h3>
@@ -23,8 +26,9 @@ const {authState:{ currentUser:userDetails}}=useAuthorization();
       <button
         className="btn btn-error margin-1"
         onClick={() => {
- 
+          authDispatch({ type: "LOG_OUT", payload: {} });
           window.location.reload(false);
+          navigate("/");
         }}
       >
         Log Out

@@ -48,6 +48,17 @@ const AuthProvider = ({ children }) => {
         };
       case "TOAST":
         return { ...state, toast: action.payload };
+        case "LOG_OUT":
+          return {
+            firstName: "",
+            id: "",
+            token: "",
+            likes: [],
+            history: [],
+            playlists: [],
+            watchlater: [],
+            currentUser: {},
+          };
       default:
         break;
     }
