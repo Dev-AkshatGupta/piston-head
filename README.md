@@ -7,7 +7,7 @@
 ### PistonHead
   
 ![](https://img.shields.io/badge/React-800080?style=for-the-badge&logo=react&logoColor=white)
-![](https://img.shields.io/badge/Redux--Toolkit-593d88?style=for-the-badge&logo=redux&logoColor=white)
+
 ![](https://img.shields.io/badge/React--Router--dom-696969?style=for-the-badge&logo=react&logoColor=white)
 
 ![](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
@@ -22,7 +22,7 @@
 
 <div align="center">
 
-<!-- <img alt="Piston" src="./src/assets/starling.svg" width="1048px" height="238px" /> -->
+
 
 Piston Head is video library which is dedicated to the gear heads a.k.a Piston Heads. 
 
@@ -30,7 +30,7 @@ Piston Head is video library which is dedicated to the gear heads a.k.a Piston H
 
 ---
 
-## Live Website: [PistonHead]()
+## Live Website: [PistonHead](https://piston-head.vercel.app/)
 
 ---
 
