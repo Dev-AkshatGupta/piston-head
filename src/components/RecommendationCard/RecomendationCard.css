@@ -27,13 +27,12 @@
 
 .title {
      font-size: 2rem;
-    width: fit-content;
     text-align: left;
- 
-     -webkit-line-clamp: 2;
+   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   display: -webkit-box;
   overflow: hidden;
+  width:20rem;
 }
 
 .username {

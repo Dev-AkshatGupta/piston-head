@@ -55,7 +55,6 @@ function App() {
           }
         />
         <Route path="/mock" element={<Mockman />} />
-
         <Route
           path="/playlist-page/:id"
           element={
@@ -64,7 +63,6 @@ function App() {
             </PrivateRoute>
           }
         />
-
         <Route
           path="/profile-page"
           element={
@@ -73,13 +71,12 @@ function App() {
             </PrivateRoute>
           }
         />
-
         <Route path="/signUp-Page" element={<SignUpPage />} />
         <Route path="/logIn-Page" element={<LogInPage />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
       
-      //todo re-design the footer
+      {/* todo re-design the footer */}
       {/* <Footer /> */}
     </div>
   );

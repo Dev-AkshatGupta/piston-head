@@ -18,7 +18,6 @@ function RecommendationCard({ contentPhotoUrl, thumbnail, creatorName, id }) {
         </Link>
 
         <div className="username">{creatorName}</div>
-        <div className="view-info"></div>
       </div>
     </div>
   );
