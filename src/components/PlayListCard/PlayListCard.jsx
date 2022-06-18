@@ -42,7 +42,9 @@ function PlayListCard({
         </div>
         <div className="vid-card-description">
           <span className="text thumbnail">
-            <Link to={`/singleVideo-page/${id}`}>{thumbNail} </Link>
+            <Link to={`/singleVideo-page/${id}`} onClick={() => history(obj)}>
+              {thumbNail}{" "}
+            </Link>
           </span>
 
           <span className="sub-text details">

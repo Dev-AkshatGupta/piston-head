@@ -12,14 +12,26 @@ function LogInForm() {
     password: "",
   });
   const { logInHandler } = useUserDetails();
-  function clickHandler(e) {
-    //  to prevent initial refreshing of the page
-    e.preventDefault();
-
-    logInHandler(details.email, details.password);
-
- 
-  }
+ const passwordRegEx = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+ function validateDetails(details) {
+   if (details.email === "" || details.password === "") {
+     notifyError("Fill all the fields");
+     return false;
+   } else if (passwordRegEx.test(details.password)) {
+     return passwordRegEx.test(details.password);
+   } else {
+     notifyError("Please fill password correctly");
+     return false;
+   }
+ }
+ function clickHandler(e) {
+   //  to prevent initial refreshing of the page
+   e.preventDefault();
+   if (validateDetails(details)) {
+    //  dispatch(login(details));
+     logInHandler(details.email, details.password);
+   }
+ }
 
   return (
     <form className="form flex-column-center card-shadow background-white no-border width-38">
@@ -68,9 +80,10 @@ function LogInForm() {
       </button>
       <button
         className="btn btn-outline-pri form-btn smooth-square-radius "
-        onClick={(e) =>{e.preventDefault();
-          logInHandler("adarshbalika@gmail.com", "adarshBalika123")}
-        }
+        onClick={(e) => {
+          e.preventDefault();
+          logInHandler("guptaakshat105@gmail.com", "akshat105");
+        }}
       >
         Guest Log-In
       </button>

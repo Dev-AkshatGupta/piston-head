@@ -60,7 +60,6 @@ const DataProvider = ({ children }) => {
           playlistArr: action.payload,
         };
       case "LOGGED_IN":
-        console.log(state);
         return {
           ...state,
           watchlater: action.payload.foundUser.watchlater,
@@ -87,7 +86,17 @@ const DataProvider = ({ children }) => {
         }
       case "ASIDE":
         return { ...state, aside: !state.aside };
-
+case "SEARCH":
+ 
+return {
+    ...state,
+    data: state.backUpData.filter(
+      ({ categoryName, creator, title }) =>
+        categoryName.toLowerCase().includes(action.payload.toLowerCase()) ||
+        creator.toLowerCase().includes(action.payload.toLowerCase()) ||
+        title.toLowerCase().includes(action.payload.toLowerCase())
+    ),
+  };
       default:
         break;
     }

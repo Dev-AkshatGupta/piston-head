@@ -33,9 +33,8 @@ const useFetchingData = () => {
 };
 
 const useUserDetails = () => {
-  const { authState, authDispatch } = useAuthorization();
-  const { dispatch, notifyError, notifySuccess, notifyInfo, notifyWarn } =
-    useDataValues();
+  const { authDispatch } = useAuthorization();
+  const { notifySuccess } = useDataValues();
   const signUpHandler = async (firstName, lastName, email, password) => {
     try {
       const response = await axios.post(`/api/auth/signup`, {
@@ -66,14 +65,29 @@ const useUserDetails = () => {
       });
       localStorage.setItem("token", response.data.encodedToken);
       authDispatch({ type: "LOG_IN", payload: response.data });
-      console.log(response.data);
+
       // dispatch({ type: "LOGGED_IN ",payload:response.data});
       notifySuccess("User logged in");
     } catch (error) {
       console.log(error);
     }
   };
-  return { logInHandler, signUpHandler };
+
+  const verifyUserHandler = async () => {
+    const encodedToken = localStorage.getItem("token");
+    if (encodedToken) {
+      try {
+        const response = await axios.post("api/auth/verify", {
+          encodedToken: encodedToken,
+        });    
+        authDispatch({ type: "VERIFY_USER", payload: response });
+      } catch (error) {
+        console.log(error.response);
+      }
+    }
+  };
+
+  return { logInHandler, signUpHandler, verifyUserHandler };
 };
 
 const useLikeActions = () => {

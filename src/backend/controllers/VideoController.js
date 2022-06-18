@@ -42,6 +42,7 @@ export const getVideoHandler = function (schema, request) {
     const video = schema.videos.findBy({ _id: videoId }).attrs;
     return new Response(200, {}, { video });
   } catch (error) {
+    console.log(error);
     return new Response(
       500,
       {},

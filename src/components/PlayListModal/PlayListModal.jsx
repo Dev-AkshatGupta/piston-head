@@ -72,6 +72,7 @@ function PlayListModal() {
             className="btn btn-outline-success padding-5-10 "
             onClick={() => {
               newPlayList(details.title, details.description);
+               setDetails({title:"" ,description: "" });
             }}
           >
             Create PlayList
