@@ -46,37 +46,24 @@ To view different pages of Piston Parts you can visit the following links:
 - Video Listing Page
 - Watchlist Management
 - Authentication
-- 
+- Playlist Management
+- Like/Dislike
+- Watch Later
+- History
+
 #### P1 Features
 
-- Search
-- Address Management
-- Checkout
-- Single Product Page 
+- Debounce Search
+- Single Video Page
+- Filter Videos with Category
 -  Alerts 
 - User Profile Page
 
 #### P2 Features
 
--Order Summary
-- Payment Integration
-- Pagination on Product Listing Page
+- Remember me while login
 
-### Features Added
 
-- Private Routes: (can only be accessed while logged in)
-  - Profile
-  - Address Management
-  - Orders
-  - order-summary
-  - Wishlist
-  - Cart
-- Payment Integration (Razorpay)
-- Filters on Product Listing Page (can filter on the following):
-  - Rating
-  - Price
-  - Category
-  - Responsive Site (Both desktop and mobile responsive)
 
 ---
 
