@@ -18,7 +18,7 @@ function SingleVideoPage() {
   const { source } = useParams();
   const { authState: token } = useAuthorization();
   const [currentVideo, setCurrentVideo] = useState({});
-  console.log(source);
+  
   useEffect(() => {
     (async () => {
       try {
