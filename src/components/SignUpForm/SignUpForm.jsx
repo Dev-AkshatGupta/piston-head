@@ -1,10 +1,9 @@
-import "./SignUpForm.css"
+import "./SignUpForm.css";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthorization } from "../../contextAndReducers/AuthProvider";
 import { useUserDetails } from "../../utilities/CustomHooks";
 function SignUpForm() {
-//   const { authState, authDispatch } = useAuthorization();
   const { signUpHandler } = useUserDetails();
   const [details, setDetails] = useState({
     firstName: "",
@@ -12,6 +11,33 @@ function SignUpForm() {
     email: "",
     password: "",
   });
+   const passwordRegEx =
+     /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+   function validateDetails(details) {
+     if (
+       details.email === "" ||
+       details.password === "" ||
+       details.firstName === "" ||
+       details.lastName === ""
+     ) {
+       notifyError("Fill all the fields");
+       return false;
+     } else if (passwordRegEx.test(details.password)) {
+       return passwordRegEx.test(details.password);
+     } else {
+       notifyError("Please fill password correctly");
+       return false;
+     }
+   }
+  //  function clickHandler(e) {
+  //    e.preventDefault();
+  //    if (validateDetails(details)) signUpHandler(
+  //      details.firstName,
+  //      details.lastName,
+  //      details.email,
+  //      details.password
+  //    );
+  //  }
   function clickHandler(e) {
     //  to prevent initial refreshing of the page
     e.preventDefault();
@@ -20,8 +46,7 @@ function SignUpForm() {
       details.lastName,
       details.email,
       details.password
-    );
-
+    ); 
   }
   const [viewPassword, setViewPassword] = useState(false);
   return (
@@ -48,36 +73,30 @@ function SignUpForm() {
         placeholder="Enter Your Email"
         onChange={(e) => setDetails({ ...details, email: e.target.value })}
       />
-      <input
-        type={!viewPassword ? "password" : "text"}
-        name="password"
-        className="form-input"
-        placeholder="Enter Your Password"
-        onChange={(e) => setDetails({ ...details, password: e.target.value })}
-      />
-      {!viewPassword && (
-        <i
-          className="fa fa-eye text"
-          aria-hidden="true"
-          onClick={(e) => setViewPassword(!viewPassword)}
-        ></i>
-      )}
-      {viewPassword && (
-        <i
-          className="fas fa-eye-slash text"
-          onClick={(e) => setViewPassword(!viewPassword)}
-        ></i>
-      )}
-
-      <div>
-        <input type="checkbox" name="" id="" />
-        <label htmlFor="input" className="sub-text">
-          I accept all the terms and conditions
-        </label>
+      <div className="relative width-100">
+        <input
+          type={!viewPassword ? "password" : "text"}
+          name="password"
+          className="form-input"
+          placeholder="Enter Your Password"
+          onChange={(e) => setDetails({ ...details, password: e.target.value })}
+        />
+        {!viewPassword && (
+          <i
+            className="fa fa-eye text eye-icon"
+            aria-hidden="true"
+            onClick={(e) => setViewPassword(!viewPassword)}
+          ></i>
+        )}
+        {viewPassword && (
+          <i
+            className="fas fa-eye-slash text eye-icon"
+            onClick={(e) => setViewPassword(!viewPassword)}
+          ></i>
+        )}
       </div>
-
       <button
-        className="btn btn-outline-pri form-btn smooth-square-radius "
+        className="btn btn-outline-pri form-btn smooth-square-radius flex-center-center  "
         onClick={(e) => clickHandler(e)}
       >
         Sign-Up

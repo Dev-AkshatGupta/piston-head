@@ -4,12 +4,15 @@ function RecommendationCard({ contentPhotoUrl, thumbnail, creatorName, id }) {
   return (
     <div className="reccomendation text">
       <div className="preview">
-        <img
-          width="168"
-          alt={thumbnail}
-          src={contentPhotoUrl}
-          srcSet={`${contentPhotoUrl}.5x`}
-        />
+        <Link to={`/singleVideo-page/${id}`}>
+          {" "}
+          <img
+            width="168"
+            alt={thumbnail}
+            src={contentPhotoUrl}
+            srcSet={`${contentPhotoUrl}.5x`}
+          />
+        </Link>
       </div>
 
       <div className="info text">

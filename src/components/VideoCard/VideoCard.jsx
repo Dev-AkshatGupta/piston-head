@@ -58,7 +58,10 @@ function VideoCard({
           </span>
         </div>
         <div className="vid-menu-option " onClick={() => setMenu(!menu)}>
-          <VerticalEllipsis />
+          <span className="pointer">
+            {" "}
+            <VerticalEllipsis />
+          </span>
         </div>
       </div>
     </div>

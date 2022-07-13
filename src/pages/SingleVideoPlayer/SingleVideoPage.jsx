@@ -165,25 +165,20 @@ function SingleVideoPage() {
             {/* <!-- Media Objects --> */}
 
             <div className="next-up-bar">
-              <h5 className="align-left">Up next</h5>
-              <h5>Autoplay</h5>
-              <i className="material-icons md-18 md-dark">info</i>
-
-              <div className="switch-container">
-                <div className="switch-bar"></div>
-                <div className="switch-circle"></div>
-              </div>
+              <h2 className="align-center">Suggestions</h2>
             </div>
 
-            {similarVideos.map((item) => (
-              <RecommendationCard
-                key={item._id}
-                contentPhotoUrl={item.thumbnail.url}
-                thumbnail={item.title}
-                creatorName={item.creator}
-                id={item._id}
-              />
-            ))}
+            {similarVideos.length > 0 &&
+              similarVideos.map((item) => (
+                <RecommendationCard
+                  key={item._id}
+                  contentPhotoUrl={item.thumbnail.url}
+                  thumbnail={item.title}
+                  creatorName={item.creator}
+                  id={item._id}
+                />
+              ))}
+            {similarVideos.length===0&&<span className="align-center">There are no suggestions.</span>}
           </aside>
         </div>
       )}

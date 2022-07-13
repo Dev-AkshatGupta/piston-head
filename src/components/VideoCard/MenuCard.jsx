@@ -1,12 +1,12 @@
 import "./VideoCard.css";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDataValues } from "../../contextAndReducers/DataProvider";
 import { useAuthorization } from "../../contextAndReducers/AuthProvider";
 import {
   useWatchLaterActions,
-  useVideoHistory,
 } from "../../utilities/CustomHooks";
+import  {RiPlayList2Fill} from "react-icons/ri";
+import { BsStopwatch } from "react-icons/bs";
 function MenuCard({ obj, setMenu, menu }) {
   const { makeWatchLater, deleteFromWatchLater } = useWatchLaterActions();
 
@@ -25,22 +25,22 @@ function MenuCard({ obj, setMenu, menu }) {
             setModalDisplay(!modalDisplay);
           }}
         >
-          <i className="material-icons md-dark padding-l-r">list</i>Add to
-          playlist
+          <RiPlayList2Fill />
+          <span className="margin-l-1"> Add to playlist</span>
         </p>
       ) : (
         <p className="menu-card-options">
           <Link to="/logIn-page">
-            <i className="material-icons md-dark padding-l-r">list</i>Add to
-            playlist
+            <RiPlayList2Fill />
+            <span className="margin-l-1"> Add to playlist</span>
           </Link>
         </p>
       )}
       {findItemIndex === -1 && !token ? (
         <p className="menu-card-options">
           <Link to="/logIn-page">
-            <i className="material-icons md-dark md-18 padding-l-r">schedule</i>
-            Watch Later
+            <BsStopwatch />
+            <span className="margin-l-1">Watch Later</span>
           </Link>
         </p>
       ) : (
@@ -52,8 +52,9 @@ function MenuCard({ obj, setMenu, menu }) {
               setMenu(!menu);
             }}
           >
-            <i className="material-icons md-dark md-18 padding-l-r">schedule</i>
-            Watch Later
+            
+            <BsStopwatch />
+            <span className="margin-l-1">Watch Later</span>
           </p>
         )
       )}
