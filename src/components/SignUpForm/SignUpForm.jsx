@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthorization } from "../../contextAndReducers/AuthProvider";
 import { useUserDetails } from "../../utilities/CustomHooks";
+import { notifyError } from "../../utilities/Notifications";
 function SignUpForm() {
   const { signUpHandler } = useUserDetails();
   const [details, setDetails] = useState({
@@ -29,25 +30,16 @@ function SignUpForm() {
        return false;
      }
    }
-  //  function clickHandler(e) {
-  //    e.preventDefault();
-  //    if (validateDetails(details)) signUpHandler(
-  //      details.firstName,
-  //      details.lastName,
-  //      details.email,
-  //      details.password
-  //    );
-  //  }
-  function clickHandler(e) {
-    //  to prevent initial refreshing of the page
-    e.preventDefault();
-    signUpHandler(
-      details.firstName,
-      details.lastName,
-      details.email,
-      details.password
-    ); 
-  }
+   function clickHandler(e) {
+     e.preventDefault();
+     if (validateDetails(details)) signUpHandler(
+       details.firstName,
+       details.lastName,
+       details.email,
+       details.password
+     );
+   }
+ 
   const [viewPassword, setViewPassword] = useState(false);
   return (
     <form className="form flex-column-center card-shadow background-white no-border width-38">

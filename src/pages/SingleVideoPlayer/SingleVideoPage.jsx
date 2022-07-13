@@ -18,6 +18,7 @@ function SingleVideoPage() {
   const { source } = useParams();
   const { authState: token } = useAuthorization();
   const [currentVideo, setCurrentVideo] = useState({});
+  console.log(source);
   useEffect(() => {
     (async () => {
       try {
@@ -30,9 +31,8 @@ function SingleVideoPage() {
         console.log(error);
       }
     })();
-  }, []);
+  }, [source]);
 
-  
   const { creator, creatorLogo, src, title, _id: id } = currentVideo;
 
   const findLiked = state.likedVideos.findIndex((item) => item._id === id);
@@ -178,7 +178,9 @@ function SingleVideoPage() {
                   id={item._id}
                 />
               ))}
-            {similarVideos.length===0&&<span className="align-center">There are no suggestions.</span>}
+            {similarVideos.length === 0 && (
+              <span className="align-center">There are no suggestions.</span>
+            )}
           </aside>
         </div>
       )}
