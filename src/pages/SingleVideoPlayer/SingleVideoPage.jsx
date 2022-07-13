@@ -9,16 +9,16 @@ import "./SingleVideoPage.css";
 import { RecommendationCard } from "../../components/RecommendationCard/RecommendationCard";
 import axios from "axios";
 import { useAuthorization } from "../../contextAndReducers/AuthProvider";
+import { Loader } from "../../components/Loader/Loader";
 function SingleVideoPage() {
   const { state } = useDataValues();
   const { likeVideo, disLikeVideo } = useLikeActions();
   const { makeWatchLater, deleteFromWatchLater } = useWatchLaterActions();
-  const [loading, setLoading] = useState(true);
   // id of the video object which is playing now
   const { source } = useParams();
   const { authState: token } = useAuthorization();
   const [currentVideo, setCurrentVideo] = useState({});
-  
+ const [isLoading,setIsLoading]=useState(true);
   useEffect(() => {
     (async () => {
       try {
@@ -26,7 +26,7 @@ function SingleVideoPage() {
           data: { video },
         } = await axios.get(`/api/video/${source}`);
         setCurrentVideo(video);
-        setLoading(false);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -48,8 +48,8 @@ function SingleVideoPage() {
   return (
     <div className="scroll">
       {/* <!-- Content --> */}
-
-      {!loading && (
+      {isLoading&&<Loader/>}
+      {!isLoading && (
         <div className="content">
           {/* <!-- Main Column --> */}
 

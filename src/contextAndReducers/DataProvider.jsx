@@ -18,7 +18,7 @@ const DataProvider = ({ children }) => {
           ...state,
           data: action.payload,
           backUpData: action.payload,
-          Loader: false,
+          loader: false,
         };
       case "CATEGORY_DATA":
         return {
@@ -105,7 +105,7 @@ return {
     data: [],
     backUpData: [],
     categories: [],
-    Loader: true,
+    loader: true,
     aside: true,
     currentPlayingVideo: {},
     likedVideos: [],
