@@ -2,14 +2,13 @@ import "./VideoCard.css";
 import { Link } from "react-router-dom";
 import { useDataValues } from "../../contextAndReducers/DataProvider";
 import { useAuthorization } from "../../contextAndReducers/AuthProvider";
-import {
-  useWatchLaterActions,
-} from "../../utilities/CustomHooks";
-import  {RiPlayList2Fill} from "react-icons/ri";
+import { useWatchLaterActions } from "../../utilities/CustomHooks";
+import { RiPlayList2Fill } from "react-icons/ri";
 import { BsStopwatch } from "react-icons/bs";
+
+
 function MenuCard({ obj, setMenu, menu }) {
   const { makeWatchLater, deleteFromWatchLater } = useWatchLaterActions();
-
   const { state, modalDisplay, setModalDisplay } = useDataValues();
   const { _id: id } = obj;
   const findItemIndex = state.watchLater.findIndex((item) => item._id === id);
@@ -52,7 +51,6 @@ function MenuCard({ obj, setMenu, menu }) {
               setMenu(!menu);
             }}
           >
-            
             <BsStopwatch />
             <span className="margin-l-1">Watch Later</span>
           </p>
@@ -66,8 +64,8 @@ function MenuCard({ obj, setMenu, menu }) {
             setMenu(!menu);
           }}
         >
-          <i className="material-icons md-dark md-18 padding-l-r">schedule</i>
-          Remove watch Later
+          <BsStopwatch />
+          <span className="margin-l-1">Remove Watch Later</span>
         </p>
       )}
     </div>
