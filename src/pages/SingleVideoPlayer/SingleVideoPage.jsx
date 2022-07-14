@@ -41,9 +41,7 @@ function SingleVideoPage() {
     (item) => item._id === currentVideo._id
   );
 
-  const findWatchLaterIndex = state.watchLater.findIndex(
-    (item) => item._id === id
-  );
+
   const isWatchLater=state.watchLater.some(item=>item._id===currentVideo._id);
   const similarVideos = state.backUpData.filter(
     (item) =>
@@ -123,44 +121,28 @@ function SingleVideoPage() {
 
               <div className="lead-btn-row">
                 <div className="lead-social-btn">
-                  <a>
+                  <a onClick={handleWatchLater.bind(this, currentVideo)}>
                     <i className="material-icons md-dark">add</i>
-                    {isWatchLater &&  (
-                      <span
-                        className="pointer"
-                        onClick={handleWatchLater.bind(this,currentVideo)}
-                      >
-                        {isWatchLater?"Remove from watchlater":"Add to watch-later"}
-                      </span>
-                    )  
-                    }
-                    {/* {findWatchLaterIndex > -1 && (
-                      <span
-                        className="pointer"
-                        onClick={() => deleteFromWatchLater(id)}
-                      >
-                        Remove from watchLater
-                      </span>
-                    )} */}
+
+                    <span className="pointer">
+                      {isWatchLater
+                        ? "Remove from watchlater"
+                        : "Add to watch-later"}
+                    </span>
                   </a>
                 </div>
                 <div className="lead-voting-btn">
-                  <a
-                    onClick={                  
-                      handleLike.bind(this,currentVideo)
-                    }
-                  >
+                  <a onClick={handleLike.bind(this, currentVideo)}>
                     {!findLiked && (
                       <i className="material-icons md-dark md-18">thumb_up</i>
                     )}
-                   
+
                     {findLiked && (
                       <i className="material-icons md-dark md-18 liked">
                         thumb_up
                       </i>
                     )}
                   </a>
-                  
                 </div>
               </div>
             </section>
