@@ -115,6 +115,7 @@ export const verifyUser = function (schema, request) {
   try {
     if (decodedToken) {
       const user = this.db.users.findBy({ username: decodedToken.username });
+      console.log(user);
       if (user) {
         return new Response(200, {}, { user });
       }
@@ -125,6 +126,7 @@ export const verifyUser = function (schema, request) {
       { errors: ["The token is invalid. Unauthorized access error."] }
     );
   } catch (error) {
+    console.log(error);
     return new Response(
       500,
       {},

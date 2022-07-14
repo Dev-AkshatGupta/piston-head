@@ -77,16 +77,17 @@ console.log(response);
 
   const verifyUserHandler = async () => {
     const encodedToken = localStorage.getItem("token");
-    if (encodedToken) {
       try {
         const response = await axios.post("api/auth/verify", {
           encodedToken: encodedToken,
         });    
+     console.log(response);
         authDispatch({ type: "VERIFY_USER", payload: response });
       } catch (error) {
-        console.log(error.response);
+
+        console.log(error);
       }
-    }
+    
   };
 
   return { logInHandler, signUpHandler, verifyUserHandler };

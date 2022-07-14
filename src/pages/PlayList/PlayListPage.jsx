@@ -12,7 +12,7 @@ function PlayListPage() {
   );
   const navigate = useNavigate();
   const currentPlayList = state.playlistArr[currentPlaylistIndex];
-  console.log(currentPlayList);
+  
   const { deletePlayList } = usePlayListActions();
   return (
     // item extracted out of this is basically a object which contains a different way of the id and stuff of the

@@ -4,7 +4,7 @@ import {
   useLikeActions,
   useWatchLaterActions,
 } from "../../utilities/CustomHooks";
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import "./SingleVideoPage.css";
 import { RecommendationCard } from "../../components/RecommendationCard/RecommendationCard";
 import axios from "axios";
@@ -18,7 +18,7 @@ function SingleVideoPage() {
   const { source } = useParams();
   const { authState: token } = useAuthorization();
   const [currentVideo, setCurrentVideo] = useState({});
- const [isLoading,setIsLoading]=useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     (async () => {
       try {
@@ -33,28 +33,49 @@ function SingleVideoPage() {
     })();
   }, [source]);
 
-  const { creator, creatorLogo, src, title, _id: id } = currentVideo;
+  const { creator, creatorLogo, src, title, _id } = currentVideo;
+ 
 
-  const findLiked = state.likedVideos.findIndex((item) => item._id === id);
+  const currentPath = useLocation();
+  const findLiked = state.likedVideos.some(
+    (item) => item._id === currentVideo._id
+  );
+
   const findWatchLaterIndex = state.watchLater.findIndex(
     (item) => item._id === id
   );
+  const isWatchLater=state.watchLater.some(item=>item._id===currentVideo._id);
   const similarVideos = state.backUpData.filter(
     (item) =>
       item.categoryName === currentVideo.categoryName &&
       item._id !== currentVideo._id
   );
-  const navigate=useNavigate();
-const handleLike=(currentVideo)=>{
-token?likeVideo(currentVideo):navigate("/login")
-}
-const handleWatchLater=()=>{
-
-}
+  const navigate = useNavigate();
+  const handleLike = (currentVideo) => {
+    token.id
+      ? findLiked
+        ? disLikeVideo(currentVideo._id)
+        : likeVideo(currentVideo)
+      : navigate("/logIn-Page", {
+          state: { from: currentPath },
+          replace: true,
+        });
+  };
+  
+  const handleWatchLater = (currentVideo) => {
+    token.id
+      ? isWatchLater
+        ? deleteFromWatchLater(currentVideo._id)
+        : makeWatchLater(currentVideo)
+      : navigate("/logIn-Page", {
+          state: { from: currentPath },
+          replace: true,
+        });
+  };
   return (
     <div className="scroll">
       {/* <!-- Content --> */}
-      {isLoading&&<Loader/>}
+      {isLoading && <Loader />}
       {!isLoading && (
         <div className="content">
           {/* <!-- Main Column --> */}
@@ -104,54 +125,42 @@ const handleWatchLater=()=>{
                 <div className="lead-social-btn">
                   <a>
                     <i className="material-icons md-dark">add</i>
-                    {findWatchLaterIndex === -1 && token ? (
+                    {isWatchLater &&  (
                       <span
                         className="pointer"
-                        onClick={() => makeWatchLater(currentVideo)}
+                        onClick={handleWatchLater.bind(this,currentVideo)}
                       >
-                        Add to watch-later
+                        {isWatchLater?"Remove from watchlater":"Add to watch-later"}
                       </span>
-                    ) : (
-                      findWatchLaterIndex === -1 && (
-                        <Link to="/logIn-page"> Add to watch-later</Link>
-                      )
-                    )}
-                    {findWatchLaterIndex > -1 && (
+                    )  
+                    }
+                    {/* {findWatchLaterIndex > -1 && (
                       <span
                         className="pointer"
                         onClick={() => deleteFromWatchLater(id)}
                       >
                         Remove from watchLater
                       </span>
-                    )}
+                    )} */}
                   </a>
-               
                 </div>
                 <div className="lead-voting-btn">
                   <a
-                    onClick={() => {
-                      // likeVideo(currentVideo);
-                      handleLike(currentVideo);
-                    }}
+                    onClick={                  
+                      handleLike.bind(this,currentVideo)
+                    }
                   >
-                    {findLiked === -1 && (
+                    {!findLiked && (
                       <i className="material-icons md-dark md-18">thumb_up</i>
                     )}
-                    {findLiked > -1 && (
+                   
+                    {findLiked && (
                       <i className="material-icons md-dark md-18 liked">
                         thumb_up
                       </i>
                     )}
                   </a>
-                  <a
-                    onClick={() => {
-                      disLikeVideo(id);
-                    }}
-                  >
-                    {findLiked > -1 && (
-                      <i className="material-icons md-dark md-18">thumb_down</i>
-                    )}
-                  </a>
+                  
                 </div>
               </div>
             </section>

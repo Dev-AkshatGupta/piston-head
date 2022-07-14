@@ -14,7 +14,9 @@
     height: 11.5rem;
     width: 34.8rem;
 }
-
+.preview img{
+object-fit: cover;
+}
 .timestamp {
     position: absolute;
     bottom: 5px;
