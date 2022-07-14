@@ -306,3 +306,7 @@ padding-right:.5rem ;
   font-size: 1.2rem;
   margin: 1rem;
 }
+.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+}

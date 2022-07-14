@@ -4,7 +4,7 @@ import {
   useLikeActions,
   useWatchLaterActions,
 } from "../../utilities/CustomHooks";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import "./SingleVideoPage.css";
 import { RecommendationCard } from "../../components/RecommendationCard/RecommendationCard";
 import axios from "axios";
@@ -44,7 +44,13 @@ function SingleVideoPage() {
       item.categoryName === currentVideo.categoryName &&
       item._id !== currentVideo._id
   );
+  const navigate=useNavigate();
+const handleLike=(currentVideo)=>{
+token?likeVideo(currentVideo):navigate("/login")
+}
+const handleWatchLater=()=>{
 
+}
   return (
     <div className="scroll">
       {/* <!-- Content --> */}
@@ -119,19 +125,13 @@ function SingleVideoPage() {
                       </span>
                     )}
                   </a>
-                  <a href="">
-                    <i className="material-icons md-dark md-18">share</i>
-                    <span>Share</span>
-                  </a>
-                  <a>
-                    <i className="material-icons md-dark">more_horiz</i>
-                    <span>More</span>
-                  </a>
+               
                 </div>
                 <div className="lead-voting-btn">
                   <a
                     onClick={() => {
-                      likeVideo(currentVideo);
+                      // likeVideo(currentVideo);
+                      handleLike(currentVideo);
                     }}
                   >
                     {findLiked === -1 && (
