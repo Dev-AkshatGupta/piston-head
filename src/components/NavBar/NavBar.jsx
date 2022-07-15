@@ -1,11 +1,11 @@
 import { useDataValues } from "./../../contextAndReducers/DataProvider";
 import "./NavBar.css";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link,useLocation } from "react-router-dom";
 import { debounce } from "./../../utilities/debounce";
 import { CgProfile } from "react-icons/cg";
 function NavBar() {
   const { dispatch } = useDataValues();
+const location=useLocation();
 
   const search = debounce((input) => {
     dispatch({ type: "SEARCH", payload: input });
@@ -31,6 +31,7 @@ function NavBar() {
 
       {/* <!-- Search --> */}
 
+      {location.pathname==="/" &&
       <div className="search">
         <input
           className="search-input"
@@ -41,7 +42,7 @@ function NavBar() {
         <button className="search-button">
           <i className="material-icons md-18 md-dark">search</i>
         </button>
-      </div>
+      </div>}
 
       {/* <!-- Masthead User --> */}
 

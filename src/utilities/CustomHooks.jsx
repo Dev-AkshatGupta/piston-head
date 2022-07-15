@@ -34,7 +34,7 @@ const useFetchingData = () => {
 
 const useUserDetails = () => {
   const { authDispatch } = useAuthorization();
-  const { notifySuccess } = useDataValues();
+  const { notifySuccess,notifyError } = useDataValues();
   const signUpHandler = async (firstName, lastName, email, password) => {
     try {
       const response = await axios.post(`/api/auth/signup`, {
@@ -45,7 +45,7 @@ const useUserDetails = () => {
       });
       // saving the encodedToken in the localStorage
       localStorage.setItem("token", response.data.encodedToken);
-
+console.log(response);
       authDispatch({
         type: "SIGN_IN",
         payload: response.data,
@@ -54,6 +54,7 @@ const useUserDetails = () => {
       notifySuccess("User signed up");
     } catch (error) {
       console.log(error);
+            notifyError("Something went wrong");
     }
   };
   // to help user in login in the application
@@ -70,21 +71,23 @@ const useUserDetails = () => {
       notifySuccess("User logged in");
     } catch (error) {
       console.log(error);
+      notifyError;("Something went wrong")
     }
   };
 
   const verifyUserHandler = async () => {
     const encodedToken = localStorage.getItem("token");
-    if (encodedToken) {
       try {
         const response = await axios.post("api/auth/verify", {
           encodedToken: encodedToken,
         });    
+     console.log(response);
         authDispatch({ type: "VERIFY_USER", payload: response });
       } catch (error) {
-        console.log(error.response);
+
+        console.log(error);
       }
-    }
+    
   };
 
   return { logInHandler, signUpHandler, verifyUserHandler };

@@ -4,20 +4,21 @@ import {
   useLikeActions,
   useWatchLaterActions,
 } from "../../utilities/CustomHooks";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import "./SingleVideoPage.css";
 import { RecommendationCard } from "../../components/RecommendationCard/RecommendationCard";
 import axios from "axios";
 import { useAuthorization } from "../../contextAndReducers/AuthProvider";
+import { Loader } from "../../components/Loader/Loader";
 function SingleVideoPage() {
   const { state } = useDataValues();
   const { likeVideo, disLikeVideo } = useLikeActions();
   const { makeWatchLater, deleteFromWatchLater } = useWatchLaterActions();
-  const [loading, setLoading] = useState(true);
   // id of the video object which is playing now
   const { source } = useParams();
   const { authState: token } = useAuthorization();
   const [currentVideo, setCurrentVideo] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     (async () => {
       try {
@@ -25,31 +26,55 @@ function SingleVideoPage() {
           data: { video },
         } = await axios.get(`/api/video/${source}`);
         setCurrentVideo(video);
-        setLoading(false);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
     })();
-  }, []);
+  }, [source]);
 
-  
-  const { creator, creatorLogo, src, title, _id: id } = currentVideo;
+  const { creator, creatorLogo, src, title, _id } = currentVideo;
+ 
 
-  const findLiked = state.likedVideos.findIndex((item) => item._id === id);
-  const findWatchLaterIndex = state.watchLater.findIndex(
-    (item) => item._id === id
+  const currentPath = useLocation();
+  const findLiked = state.likedVideos.some(
+    (item) => item._id === currentVideo._id
   );
+
+
+  const isWatchLater=state.watchLater.some(item=>item._id===currentVideo._id);
   const similarVideos = state.backUpData.filter(
     (item) =>
       item.categoryName === currentVideo.categoryName &&
       item._id !== currentVideo._id
   );
-
+  const navigate = useNavigate();
+  const handleLike = (currentVideo) => {
+    token.id
+      ? findLiked
+        ? disLikeVideo(currentVideo._id)
+        : likeVideo(currentVideo)
+      : navigate("/logIn-Page", {
+          state: { from: currentPath },
+          replace: true,
+        });
+  };
+  
+  const handleWatchLater = (currentVideo) => {
+    token.id
+      ? isWatchLater
+        ? deleteFromWatchLater(currentVideo._id)
+        : makeWatchLater(currentVideo)
+      : navigate("/logIn-Page", {
+          state: { from: currentPath },
+          replace: true,
+        });
+  };
   return (
     <div className="scroll">
       {/* <!-- Content --> */}
-
-      {!loading && (
+      {isLoading && <Loader />}
+      {!isLoading && (
         <div className="content">
           {/* <!-- Main Column --> */}
 
@@ -96,60 +121,26 @@ function SingleVideoPage() {
 
               <div className="lead-btn-row">
                 <div className="lead-social-btn">
-                  <a>
+                  <a onClick={handleWatchLater.bind(this, currentVideo)}>
                     <i className="material-icons md-dark">add</i>
-                    {findWatchLaterIndex === -1 && token ? (
-                      <span
-                        className="pointer"
-                        onClick={() => makeWatchLater(currentVideo)}
-                      >
-                        Add to watch-later
-                      </span>
-                    ) : (
-                      findWatchLaterIndex === -1 && (
-                        <Link to="/logIn-page"> Add to watch-later</Link>
-                      )
-                    )}
-                    {findWatchLaterIndex > -1 && (
-                      <span
-                        className="pointer"
-                        onClick={() => deleteFromWatchLater(id)}
-                      >
-                        Remove from watchLater
-                      </span>
-                    )}
-                  </a>
-                  <a href="">
-                    <i className="material-icons md-dark md-18">share</i>
-                    <span>Share</span>
-                  </a>
-                  <a>
-                    <i className="material-icons md-dark">more_horiz</i>
-                    <span>More</span>
+
+                    <span className="pointer">
+                      {isWatchLater
+                        ? "Remove from watchlater"
+                        : "Add to watch-later"}
+                    </span>
                   </a>
                 </div>
                 <div className="lead-voting-btn">
-                  <a
-                    onClick={() => {
-                      likeVideo(currentVideo);
-                    }}
-                  >
-                    {findLiked === -1 && (
+                  <a onClick={handleLike.bind(this, currentVideo)}>
+                    {!findLiked && (
                       <i className="material-icons md-dark md-18">thumb_up</i>
                     )}
-                    {findLiked > -1 && (
+
+                    {findLiked && (
                       <i className="material-icons md-dark md-18 liked">
                         thumb_up
                       </i>
-                    )}
-                  </a>
-                  <a
-                    onClick={() => {
-                      disLikeVideo(id);
-                    }}
-                  >
-                    {findLiked > -1 && (
-                      <i className="material-icons md-dark md-18">thumb_down</i>
                     )}
                   </a>
                 </div>
@@ -165,25 +156,22 @@ function SingleVideoPage() {
             {/* <!-- Media Objects --> */}
 
             <div className="next-up-bar">
-              <h5 className="align-left">Up next</h5>
-              <h5>Autoplay</h5>
-              <i className="material-icons md-18 md-dark">info</i>
-
-              <div className="switch-container">
-                <div className="switch-bar"></div>
-                <div className="switch-circle"></div>
-              </div>
+              <h2 className="align-center">Suggestions</h2>
             </div>
 
-            {similarVideos.map((item) => (
-              <RecommendationCard
-                key={item._id}
-                contentPhotoUrl={item.thumbnail.url}
-                thumbnail={item.title}
-                creatorName={item.creator}
-                id={item._id}
-              />
-            ))}
+            {similarVideos.length > 0 &&
+              similarVideos.map((item) => (
+                <RecommendationCard
+                  key={item._id}
+                  contentPhotoUrl={item.thumbnail.url}
+                  thumbnail={item.title}
+                  creatorName={item.creator}
+                  id={item._id}
+                />
+              ))}
+            {similarVideos.length === 0 && (
+              <span className="align-center">There are no suggestions.</span>
+            )}
           </aside>
         </div>
       )}

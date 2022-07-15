@@ -2,3 +2,8 @@
     width: 38rem;
     max-width: 38rem;
 }
+.eye-icon{
+    position: absolute;
+    right: 30px;
+    bottom: 35%;
+}

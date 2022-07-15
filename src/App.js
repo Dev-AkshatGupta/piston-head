@@ -21,14 +21,26 @@ import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
 import { useUserDetails } from "./utilities/CustomHooks";
 import React, { useEffect } from "react";
 function App() {
-  const { modalDisplay, setModalDisplay } = useDataValues();
-  const { authState, authDispatch } = useAuthorization();
+  const { modalDisplay, state } = useDataValues();
+  
   const { verifyUserHandler } = useUserDetails();
   useEffect(() => {
     if (localStorage.getItem("token")) {
+      console.log(localStorage.getItem("token"));
       verifyUserHandler();
     }
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return !modalDisplay ? (document.body.style.overflow = "visible") : null;
+  }, [modalDisplay]);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return state.aside ? (document.body.style.overflow = "visible") : null;
+  }, [state.aside]);
+
   return (
     <div className="App">
       <ToastContainer />
@@ -75,7 +87,7 @@ function App() {
         <Route path="/logIn-Page" element={<LogInPage />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
-      
+
       {/* todo re-design the footer */}
       {/* <Footer /> */}
     </div>

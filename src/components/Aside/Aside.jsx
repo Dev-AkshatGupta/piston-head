@@ -17,12 +17,7 @@ function Aside() {
         <i className="material-icons md-dark md-18 padding-l-r">home</i>
         <span>Home</span>
       </NavLink>
-      <a href="/" className="nav-drawer-items-padding">
-        <i className="material-icons md-dark md-18 padding-l-r">
-          play_circle_filled
-        </i>
-        <span>Subscriptions</span>
-      </a>
+
       <NavLink
         to="/history-page"
         className={({ isActive }) =>
