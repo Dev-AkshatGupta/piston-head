@@ -26,18 +26,31 @@ const DataProvider = ({ children }) => {
           categories: action.payload,
         };
 
-      case "category":
-        if (action.payload !== "Home") {
+      case "CATEGORY":
+        const categories = state.categories.map((item) => {
+          if (item.categoryName === action.payload.categoryName) {
+            item.active = true;
+            return item;
+          }
+          if (item.categoryName !== action.payload.categoryName) {
+            item.active = false;
+            return item;
+          }
+        });
+        if (action.payload.categoryName !== "Home") {
           const modifiedData = state.backUpData.filter(
-            (item) => item.categoryName === action.payload
+            (item) => item.categoryName === action.payload.categoryName
           );
+          
           return {
             ...state,
+            categories,
             data: modifiedData,
           };
         } else
           return {
             ...state,
+            categories,
             data: state.backUpData,
           };
       case "VIDEO_CLICKED":
@@ -86,17 +99,18 @@ const DataProvider = ({ children }) => {
         }
       case "ASIDE":
         return { ...state, aside: !state.aside };
-case "SEARCH":
- 
-return {
-    ...state,
-    data: state.backUpData.filter(
-      ({ categoryName, creator, title }) =>
-        categoryName.toLowerCase().includes(action.payload.toLowerCase()) ||
-        creator.toLowerCase().includes(action.payload.toLowerCase()) ||
-        title.toLowerCase().includes(action.payload.toLowerCase())
-    ),
-  };
+      case "SEARCH":
+        return {
+          ...state,
+          data: state.backUpData.filter(
+            ({ categoryName, creator, title }) =>
+              categoryName
+                .toLowerCase()
+                .includes(action.payload.toLowerCase()) ||
+              creator.toLowerCase().includes(action.payload.toLowerCase()) ||
+              title.toLowerCase().includes(action.payload.toLowerCase())
+          ),
+        };
       default:
         break;
     }

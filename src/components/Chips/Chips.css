@@ -9,3 +9,8 @@ cursor: pointer;
     background-color: black;
     color:white;
 }
+.chip-acitve{
+      background-color: var(--PURE-BLACK);
+      border: 3px solid var(--ACCENT-COLOR-LIGHT);
+      color:var(--PURE-WHITE);
+}

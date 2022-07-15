@@ -10,7 +10,7 @@ function FilterArea() {
     <div className="FilterArea">
      
       {state.categories.map((item) => (
-        <Chips name={item.categoryName} key={item._id} />
+        <Chips name={item.categoryName} filter={item} key={item._id} />
       ))}
     </div>
   );
