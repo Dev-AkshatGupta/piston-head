@@ -1,16 +1,17 @@
 .chips {
-cursor: pointer;
-    padding: 0.5rem 1rem;
-    background-color: var(--ACCENT-COLOR-LIGHT);
-    border-radius: 25px;
-    font-size: 16px;
-}
-.chips:focus{
-    background-color: black;
-    color:white;
-}
-.chip-acitve{
-      background-color: var(--PURE-BLACK);
-      border: 3px solid var(--ACCENT-COLOR-LIGHT);
-      color:var(--PURE-WHITE);
-}
+    cursor: pointer;
+        padding: 0.5rem 1rem;
+        background-color: var(--ACCENT-COLOR-LIGHT);
+        border-radius: 25px;
+        font-size: 16px;
+        padding-top: 1rem;
+    }
+    .chips:focus{
+        background-color: black;
+        color:white;
+    }
+    .chip-acitve{
+          background-color: var(--PURE-BLACK);
+          border: 3px solid var(--ICONS-ORANGE);
+          color:var(--PURE-WHITE);
+    }
