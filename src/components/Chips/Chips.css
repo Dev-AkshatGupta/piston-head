@@ -12,6 +12,6 @@
     }
     .chip-acitve{
           background-color: var(--PURE-BLACK);
-          border: 3px solid var(--ICONS-ORANGE);
           color:var(--PURE-WHITE);
+          padding-bottom: 1rem;
     }
