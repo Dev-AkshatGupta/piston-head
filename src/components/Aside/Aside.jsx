@@ -17,6 +17,7 @@ function Aside() {
         <i className="material-icons md-dark md-18 padding-l-r">home</i>
         <span>Home</span>
       </NavLink>
+
       <NavLink
         to="/history-page"
         className={({ isActive }) =>
