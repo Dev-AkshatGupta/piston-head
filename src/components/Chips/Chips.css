@@ -4,6 +4,7 @@ cursor: pointer;
     background-color: var(--ACCENT-COLOR-LIGHT);
     border-radius: 25px;
     font-size: 16px;
+    padding-top: 1rem;
 }
 .chips:focus{
     background-color: black;
