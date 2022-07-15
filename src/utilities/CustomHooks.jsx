@@ -45,7 +45,7 @@ const useUserDetails = () => {
       });
       // saving the encodedToken in the localStorage
       localStorage.setItem("token", response.data.encodedToken);
-console.log(response);
+
       authDispatch({
         type: "SIGN_IN",
         payload: response.data,
@@ -81,7 +81,7 @@ console.log(response);
         const response = await axios.post("api/auth/verify", {
           encodedToken: encodedToken,
         });    
-     console.log(response);
+  
         authDispatch({ type: "VERIFY_USER", payload: response });
       } catch (error) {
 
